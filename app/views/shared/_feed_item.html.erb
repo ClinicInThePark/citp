@@ -1,0 +1,10 @@
+<li id="<%= feed_item.id %>">
+ 
+  <span class="content"><h3>BMI</h3><%= feed_item.bmi %></span>
+  <span class="content"><h3>Health</h3><%= feed_item.health%></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+  </span>
+</li>
+
+
