@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
-        @posts= @user.posts.paginate(page: params[:page])
+        #@posts= @user.posts.find_by(params[:id])
     end
 
     def update

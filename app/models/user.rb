@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
  
  #relationships to other database tables
   has_many :microposts
-  has_many :posts
+  has_many :posts, dependent: :destroy #destroys user data when user account 
+                                       # is deleted
 
 #validation for forms 
   validates :name, presence: true, length: { maximum: 50 }
@@ -26,7 +27,8 @@ class User < ActiveRecord::Base
   	def User.digest(token)
   		Digest::SHA1.hexdigest(token.to_s)
   	end
-
+    
+#methods for finding user health data from another database table. 
     def feed 
       Micropost.where("user_id = ?", id)
     end
@@ -34,11 +36,12 @@ class User < ActiveRecord::Base
     def feed2
       Post.where("user_id= ?", id)
     end 
-    
+
+#helper methods for session token authentication. 
   	private
 
   		def create_remember_token
   			self.remember_token = User.digest(User.new_remember_token)
   		end
-  		
+
 end
