@@ -9,11 +9,13 @@ class UsersController < ApplicationController
 
     def index
         @users = User.paginate(page: params[:page])
+        @q = User.search(params[:q])
+        @people = @q.result(distinct: true)
+
     end
 
     def show
     	@user = User.find(params[:id])
-      #@microposts = @user.microposts.paginate(page: params[:page])
       @posts = @user.posts.paginate(page: params[:page])
     end
 
@@ -30,7 +32,6 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
-        #@posts= @user.posts.find_by(params[:id])
     end
 
     def update

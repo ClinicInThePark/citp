@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   #resources :account_activations, only: [:edit]  
 
   resources :posts
-  
-
   resources :sessions, only: [:new,:create,:destroy]
-  resources :microposts
+ 
   
 
   root 'sessions#new'
@@ -23,6 +21,5 @@ Rails.application.routes.draw do
   match '/about',	       to: 'static_pages#about',		  via: 'get'
   match '/contact',      to: 'static_pages#contact', 	  via: 'get'
   
- 
 
 end

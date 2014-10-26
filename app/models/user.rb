@@ -29,10 +29,6 @@ class User < ActiveRecord::Base
   	end
     
 #methods for finding user health data from another database table. 
-    def feed 
-      Micropost.where("user_id = ?", id)
-    end
-    
     def feed2
       Post.where("user_id= ?", id)
     end 

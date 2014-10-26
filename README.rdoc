@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Clinic in the Park electronic system for tracking visitor clinical data. 
 
 
-Please feel free to use a different markup language if you do not plan to run
+New changes:
+-Able to edit visitor data. 
+-Began validation for email (logged_in_user function) 
+
+Things to do: 
+
+-Async editing for visitor data. 
+-Fix user data editing form. 
+-Fix formatting for user data display in profiles.
 <tt>rake doc:app</tt>.
