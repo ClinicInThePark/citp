@@ -7,10 +7,16 @@
 			<%= render 'shared/error_messages', object: f.object %> 
 
 			<%=f.label :bmi %>
-			<%=f.text_field :bmi %>
+			<%=f.text_area :bmi %>
 
 			<%=f.label :health %>
-			<%=f.text_field :health %>
+			<%=f.text_area :health %>
+
+			<%=f.label :physical %>
+			<%=f.text_area :physical %>
+
+			<%=f.label :dental %>
+			<%=f.text_area :dental %>
 
 			<%=f.submit "Save Changes", class: "btn btn-large btn-primary" %>
 

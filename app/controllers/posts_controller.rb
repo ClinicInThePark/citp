@@ -31,6 +31,6 @@ class PostsController < ApplicationController
 	private 
 
 		def post_params
-			params.require(:post).permit(:bmi,:health)
+			params.require(:post).permit(:bmi,:health,:physical,:dental)
 		end
 end
