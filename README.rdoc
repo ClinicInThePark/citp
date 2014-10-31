@@ -2,14 +2,22 @@
 
 Clinic in the Park electronic system for tracking visitor clinical data. 
 
+Latest update: 10/30/2014
+
+
 
 New changes:
--Able to edit visitor data. 
+
+-Added search function
+
 -Began validation for email (logged_in_user function) 
 
 Things to do: 
 
 -Async editing for visitor data. 
+
 -Fix user data editing form. 
+
 -Fix formatting for user data display in profiles.
+
 <tt>rake doc:app</tt>.
