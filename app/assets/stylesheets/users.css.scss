@@ -1,3 +1,33 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#p-container{
+
+  background-color: #ddd;
+  width: 90%px;
+  margin-top: 10px;
+  padding: 10px 10px 10px 10px;
+
+}
+.passport_field{
+  background-color: white;
+  float: left;
+  width: 80px;
+  height: 70px;
+  border: 1px solid black;
+  margin: 15px;
+  text-align:center;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
+
+.passport_field:hover {
+	border: 2px solid green;
+	font-weight: bold;
+}
+
+checked{
+	background-color: blue;
+}

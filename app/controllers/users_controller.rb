@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
     def new
     	@user = User.new
+
     end
 
     def index
@@ -19,9 +20,13 @@ class UsersController < ApplicationController
       @posts = @user.posts.paginate(page: params[:page])
     end
 
+#new function calls create to make an account. Create function contains all the 
+#logic for making new accounts.
+
     def create 
     	@user = User.new(user_params)
     	if @user.save
+        @user.posts.build(id: @user.id)  #initializes the health fields in the user profile
         sign_in @user
     		flash[:success] = "Welcome!"
     		redirect_to @user
@@ -71,7 +76,7 @@ class UsersController < ApplicationController
         end
       end
       
-      def admin_user
-        redirect_to(root_url) unless currrent_user.admin?
-      end 
+      #def admin_user
+      #  redirect_to(root_url) unless currrent_user.admin?
+      #end 
 end 

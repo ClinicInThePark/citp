@@ -4,8 +4,11 @@
       <%= link_to "Clinic in the Park","http://www.clinicinthepark.org", id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          
+          <% if !signed_in? %>
+            <li><%= link_to "Home", signin_path%></li>
+          <% else %>
+            <li><%= link_to "Home", root_path %></li>
+          <% end %>
           <% if signed_in? %>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Users", users_path %></li>
