@@ -76,7 +76,7 @@ class UsersController < ApplicationController
         end
       end
       
-      #def admin_user
-      #  redirect_to(root_url) unless currrent_user.admin?
-      #end 
+      def admin_user
+        redirect_to(root_url) unless currrent_user.admin?
+      end 
 end 

@@ -4,6 +4,3 @@
 
 
 
-$('.passport_field').click(function(){
-	$('.passport_filed').addClass("checked")
-});

@@ -16,4 +16,4 @@
 //= require turbolinks
 //= require_tree .
 
-@import passport_diplay
+

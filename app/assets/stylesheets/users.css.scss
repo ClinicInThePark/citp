@@ -31,3 +31,32 @@
 checked{
 	background-color: blue;
 }
+
+/* options */
+
+.hidden {
+  width: 150px;
+  background-color: #ddd;
+  position: absolute;
+  border: 2px solid white;
+  -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none;
+}
+
+.options {
+  @extend .hidden;
+  top: 0px;
+  right: 50px;
+  width: 150px;
+  background-color: #ddd;
+  position: absolute;
+  border: 2px solid white;
+  -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
