@@ -1,37 +1,36 @@
 == README
 
-#Clinic in the Park, online passport for user tracking. 
+===Clinic in the Park, online passport for user tracking. 
 
-#Latest update: 11/2/2014
+===Latest update: 11/2/2014
 
 
-
-#New changes:
+===New changes:
 
 -Created Passport GUI template (version 1)
 
 -Added passport interaction in user's profile 
 
-  -When a passport field is clicked, a text box (currently empty and of white color) is displayed. 
+-When a passport field is clicked, a text box (currently empty and of white color) is displayed. 
 
 -Fixed problem where you could still see the users index when there is no user logged in. 
 
 -Began validation for email (logged_in_user function) (very low priority)
 
-#Things to do: 
+==Things to do: 
 
-###High Priority:
+===High Priority:
 
 -AJAX call to validate data and save CSS-transformed-through-Jquery data in the server (VERY HIGH PRIORITY.
 
 -Apply functionality for passport field's custom messages when clicked. (High priority). 
 
-###Medium Priority:
+===Medium Priority:
 
 -Revamp code 
 
 
-### Low priority
+=== Low priority
 
 -Fix coloring of passport fields for when a user 'visits' a booth. 
 
