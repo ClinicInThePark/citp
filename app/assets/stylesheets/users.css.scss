@@ -28,7 +28,7 @@
 	font-weight: bold;
 }
 
-checked{
+.checked{
 	background-color: blue;
 }
 
@@ -49,14 +49,16 @@ checked{
 
 .options {
   @extend .hidden;
-  top: 0px;
+  top: 50px;
   right: 50px;
-  width: 150px;
-  background-color: #ddd;
+  width: 100px;
+  height: 100px;
+  background-color: white;
   position: absolute;
   border: 2px solid white;
   -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
+  
 }
 
