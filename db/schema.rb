@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030163251) do
+ActiveRecord::Schema.define(version: 20141108003221) do
+
+  create_table "booths", force: true do |t|
+    t.string   "name"
+    t.string   "service"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "create_events", force: true do |t|
+    t.integer  "date"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.integer  "date"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "healths", force: true do |t|
     t.datetime "created_at"
@@ -24,6 +46,8 @@ ActiveRecord::Schema.define(version: 20141030163251) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
   create_table "physicals", force: true do |t|
     t.datetime "created_at"

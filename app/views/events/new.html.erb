@@ -1,0 +1,26 @@
+<h1>Create Event</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@event) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %> 
+
+			<%=f.label :Event_date %> 
+			<%=f.date_field :date %>
+
+			<%=f.label :Location %>
+			<%=f.text_field :location %>
+
+			<select name="booth_name"
+				<%= @booths.each do |booth| %>
+					<option value="<% booth.name %>"><%= booth.name %></option>
+				<% end %>
+			</select>
+
+			<p>Organization not found?</p>
+			
+			<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
+
+		<% end %>
+	</div>
+</div>

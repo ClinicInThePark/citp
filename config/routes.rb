@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :sessions, only: [:new,:create,:destroy]
+  resources :booths
+  resources :events
  
   
 
@@ -18,9 +20,6 @@ Rails.application.routes.draw do
   match '/signout',      to: 'sessions#destroy', 		    via: 'delete'
   match '/signup',	     to: 'users#new',				        via: 'get'
   match '/home',         to: 'sessions#index',          via: 'get'
-  match '/help', 	       to: 'static_pages#help', 		  via: 'get'
-  match '/about',	       to: 'static_pages#about',		  via: 'get'
-  match '/contact',      to: 'static_pages#contact', 	  via: 'get'
-  
+
 
 end

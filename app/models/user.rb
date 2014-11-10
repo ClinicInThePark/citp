@@ -28,11 +28,6 @@ class User < ActiveRecord::Base
   		Digest::SHA1.hexdigest(token.to_s)
   	end
     
-#methods for finding user health data from another database table. 
-    def feed2
-      Post.where("user_id= ?", id)
-    end 
-
 #helper methods for session token authentication. 
   	private
 

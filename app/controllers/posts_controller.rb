@@ -6,15 +6,8 @@ class PostsController < ApplicationController
 		@posts = Post.find(params[:id])
 	end
 
-	def index
-	end 
-
-	def create
-	end 
-	
 	def edit
-		@post = Post.find(params[:id])
-		
+		@post = Post.find(params[:id])	
 	end
 
 	def update

@@ -32,6 +32,9 @@
 	background-color: blue;
 }
 
+.setChecked{
+  
+}
 /* options */
 
 .hidden {
@@ -62,3 +65,30 @@
   
 }
 
+button{
+  width: 150px;
+  height: 25%;
+}
+button:hover{
+  background-color: #A3A375;
+}
+
+.messagePop{
+  width: 150px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  border: 2px solid black;
+  -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.boothmsg{
+  width:150px;
+  height:25px;
+  text-align: center;
+  font-weight: bold; 
+  size: 16px;
+  border-bottom: 2px solid black;
+}
