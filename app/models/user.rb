@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
  
  #relationships to other database tables
-  has_many :microposts
-  has_many :posts, dependent: :destroy #destroys user data when user account 
+ has_many :posts, dependent: :destroy #destroys user data when user account 
                                        # is deleted
 
 #validation for forms 

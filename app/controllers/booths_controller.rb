@@ -14,7 +14,7 @@ class BoothsController < ApplicationController
     	if @booth.save
 	        #@user.posts.build(id: @user.id)  #initializes the health fields in the user profile
 	        flash[:success] = "Organization added!"
-	       	render 'index'
+	       	redirect_to new_event_path
     	else
     		render 'new'
     	end

@@ -1,26 +1,21 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
-
-<%= search_form_for @q do |f| %>
-	<div class="field">
-		<%= f.label :name_cont, "Name" %>
-		<%= f.search_field :name_cont %>
+<!-- if the current user is not an admin, display information about citp events,
+	 else if the current user is an admin 
+	 allow the admin to edit/create the passport information -->
+<%if current_user.admin? %>
+		<div class="col-xs-8 col-sm-6" style="margin-left:30%">
+			<button type="button" class="btn btn-default"><%=link_to"Create/Edit Organization", new_booth_path%></button>
+			<button type="button" class="btn btn-default"><%=link_to "Create Edit Passport", new_event_path%></button>
+		</div>
+<%else%>
+	<div>
+		<%= will_paginate %>
+		<h3> Attending Booths </h3> 
+			<%Booth.all.each do |booth|%>
+				<p>Booth Name: <%=booth.name%></p>
+				<p>Service Type: <%=booth.service%></p>
+				<p>Description: <%=booth.description%> </p>
+				___________________________________________<br><br>
+			<%end%>
+		<%= will_paginate %>
 	</div>
-	<div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
-<% if @people %>
-	<% @people.each do |person| %>
-	<ul class ="users">
-	   <li>
-		  <%= link_to person.name, person %>
-		  <% if current_user.admin? && !current_user?(person) %>
-		    | <%= link_to "Delete", person, method: :delete, data: { confirm: "You sure?" } %>
-		    | <%= link_to "Passport", person %>
-		  <% end %>
-	   </li>
-	</ul>
-	<% end %>
-<% end %>
-
-
+<%end%>

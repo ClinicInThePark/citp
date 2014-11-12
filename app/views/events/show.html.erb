@@ -1,0 +1,6 @@
+<h3> All past events </h3>
+<div>
+	<% @events.each do |event| %>
+		<li><%= event.date %> | <%=event.location%> | <%=event.boothlist%> </li>
+	<% end %>
+</div>

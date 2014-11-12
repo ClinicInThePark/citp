@@ -9,16 +9,19 @@
 			<%=f.date_field :date %>
 
 			<%=f.label :Location %>
-			<%=f.text_field :location %>
+			<%=f.text_field :location %> 
 
-			<select name="booth_name"
-				<%= @booths.each do |booth| %>
-					<option value="<% booth.name %>"><%= booth.name %></option>
-				<% end %>
-			</select>
+			<% @booths.each do |booth|%>
+				<%=check_box_tag
+				<%=check_box("event","boothlist",{:multiple => true},booth.name,nil)%>
+				<%=f.label booth.name,:class=>"checkbox inline" %>
+				<br>
+			<%end%>
+			<br>
 
-			<p>Organization not found?</p>
-			
+			Organization not found?<br>
+			<%=link_to "Add an organization", new_booth_path%>
+			<br><br>
 			<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
 
 		<% end %>
