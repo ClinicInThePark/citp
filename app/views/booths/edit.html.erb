@@ -1,0 +1,17 @@
+<% provide(:title ,"Edit Booth") %>
+<h1> Update Booth: <%=@booth.name%></h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@booth) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %> 
+			<%=f.label :Name%>
+			<%=f.text_field :name%>
+			<%=f.label :Description %>
+			<%=f.text_field :description %>
+
+			<%=f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+
+		<% end %>
+	</div>
+</div>

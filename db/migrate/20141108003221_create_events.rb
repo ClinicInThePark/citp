@@ -1,8 +1,9 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-    	t.integer :date
+    	t.date :date
     	t.string :location
+    	t.string :boothlist, default: =>[]
     	
     	t.timestamps
     end

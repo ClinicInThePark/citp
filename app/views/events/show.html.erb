@@ -1,6 +1,9 @@
-<h3> All past events </h3>
-<div>
-	<% @events.each do |event| %>
-		<li><%= event.date %> | <%=event.location%> | <%=event.boothlist%> </li>
-	<% end %>
+<div class="events">
+	<h3>Booths attending <%=@event.date%> event</h3>
+	<%@event.boothlist.each do |booth_id|%>
+		<%booth = Booth.find(booth_id)%>
+		<li>BoothName: <%=booth.name%></li><br>
+		<li>Description <%=booth.description%></li><br><br>
+	<%end%>
 </div>
+<%=link_to "Generate a Passport for this event",passport_path(@event)%> 

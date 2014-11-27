@@ -17,12 +17,12 @@ class UsersController < ApplicationController
         @users = User.paginate(page: params[:page])
         @events= Event.all
         @booths = Booth.all
-
     end
 
     def show
     	@user = User.find(params[:id])
-      @posts = @user.posts.paginate(page: params[:page])
+        redirect_to events_path
+
     end
 
 #new function calls create to make an account. Create function contains all the 
@@ -62,12 +62,13 @@ class UsersController < ApplicationController
  #####################################################   
     private
 
+    #prevents cross-site scripting
+    #users can only submit information using these hashes only.
   	  def user_params
-  	  	params.require(:user).permit(:name,:email,:password,:password_confirmation)
+  	  	params.require(:user).permit(:name,:email,:password,:password_confirmation,)
   	  end
 
       #Before filters
-
       def correct_user
         @user = User.find(params[:id])
         redirect_to(root_url) unless current_user?(@user)

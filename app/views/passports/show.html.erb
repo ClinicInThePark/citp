@@ -1,0 +1,13 @@
+<div class="passport">
+	<%@event.boothlist.each do |booth_id|%>
+		<%booth = Booth.find(booth_id)%>
+		<div class ="booth-container">
+			<div class="sticker-field">
+			</div>
+			<div class="booth-info">
+				<%=booth.name%>
+				<!--<%=booth.description%>-->
+			</div>
+		</div>
+	<%end%>
+</div>

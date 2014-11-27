@@ -1,0 +1,18 @@
+<span class ="event-link"><%=link_to "Create New Event", new_event_path%></span>
+
+<div class="booths">
+	<ul class ="users">
+		<%@events.each do |event|%>
+		   <li>
+			  <%=event.date%> | <%=event.location%> <%=link_to "check event", event_path(event)%>
+		   </li>
+		<%end%>
+	</ul>
+</div>
+
+
+		<div class="single-event">
+			<div class="organizations-list">
+			</div>
+		</div>
+	</div> 

@@ -1,3 +1,19 @@
 // Place all the styles related to the booth controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.booths{
+	border: 2px solid grey;
+	width:500px;
+	height:300px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	margin: 0 auto;
+
+
+}
+
+.users li{
+	text-align:center;
+}

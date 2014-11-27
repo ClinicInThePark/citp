@@ -1,21 +1,7 @@
 <!-- if the current user is not an admin, display information about citp events,
 	 else if the current user is an admin 
 	 allow the admin to edit/create the passport information -->
-<%if current_user.admin? %>
-		<div class="col-xs-8 col-sm-6" style="margin-left:30%">
-			<button type="button" class="btn btn-default"><%=link_to"Create/Edit Organization", new_booth_path%></button>
-			<button type="button" class="btn btn-default"><%=link_to "Create Edit Passport", new_event_path%></button>
-		</div>
-<%else%>
-	<div>
-		<%= will_paginate %>
-		<h3> Attending Booths </h3> 
-			<%Booth.all.each do |booth|%>
-				<p>Booth Name: <%=booth.name%></p>
-				<p>Service Type: <%=booth.service%></p>
-				<p>Description: <%=booth.description%> </p>
-				___________________________________________<br><br>
-			<%end%>
-		<%= will_paginate %>
-	</div>
-<%end%>
+<div class="col-xs-8 col-sm-6" style="margin-left:30%">
+	<button type="button" class="btn btn-default"><%=link_to"Add Organization", new_booth_path%></button>
+	<button type="button" class="btn btn-default"><%=link_to "Create Event", new_event_path%></button>
+</div>

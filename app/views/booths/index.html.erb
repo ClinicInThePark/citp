@@ -1,22 +1,14 @@
-<% provide(:title ,"Add organization") %>
-<h1> Add an Organization to the Passport System </h1>
+<span class ="event-link"><%=link_to "Add New Organization", new_booth_path%></span>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@booth) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %> 
 
-			<%=f.label :name %>
-			<%=f.text_field :name %>
-
-			<%=f.label :service %>
-			<%=f.text_field :service %>
-
-			<%=f.label :description %>
-			<%=f.text_area :description %>
-
-			<%=f.submit "Add Organization", class: "btn btn-large btn-primary" %>
-
-		<% end %>
-	</div>
+<div class="booths">
+	<ul class ="users">
+		<%@booths.each do |b|%>
+		   <li>
+			  <%=b.name%>
+			    | <%= link_to "Delete", b, method: :delete, data: { confirm: "You sure?" } %>
+			    | <%= link_to "Edit", edit_booth_path(b) %>
+		   </li>
+		<%end%>
+	</ul>
 </div>

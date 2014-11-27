@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   #Allows for controllers to direct/redirect REST calls in 
   #the rails app.
   resources :users 
-  resources :posts
   resources :sessions, only: [:new,:create,:destroy]
   resources :booths
   resources :events
+  resources :passports
  
   
 
@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   #a different relative path.
   root 'sessions#new'
   
-  match '/search',       to: 'users#search',            via: 'get' 
+  match '/booths',       to: 'booths#index',            via: 'get'
+  match '/events',       to: 'events#index',            via: 'get' 
   match '/users',        to: 'users#index',             via: 'get'
+  match '/search',       to: 'users#search',            via: 'get' 
   match '/signin',	     to: 'sessions#new', 			      via: 'get'
   match '/signout',      to: 'sessions#destroy', 		    via: 'delete'
   match '/signup',	     to: 'users#new',				        via: 'get'
