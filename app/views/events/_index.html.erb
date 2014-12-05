@@ -1,6 +1,5 @@
-<span class ="event-link"><%=link_to "Generate a Passport for this event",passport_path(@event)%> </span>
-<div class="events">
-	<link rel="stylesheet" type="text/css" media="print" href="print.css">
+<div class ="event-link"><%=link_to "Generate a Passport for this event",passport_path(@event)%> </div>
+<div class="events" style="margin-left:0px">
 	<h3>Booths attending <%=@event.date%> event</h3>
 	<%@event.boothlist.each do |booth_id|%>
 		<%booth = Booth.find(booth_id)%>

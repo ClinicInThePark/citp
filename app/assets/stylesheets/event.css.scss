@@ -10,11 +10,11 @@ h3{
 }
 .events{
 	border: 2px solid grey;
-	width:500px;
+	width:400px;
 	height:300px;
 	overflow-x:hidden;
 	overflow-y:scroll;
-	margin: 0 auto;
+	margin-left:30%;
 	
 }
 
@@ -28,7 +28,6 @@ h3{
 	display: block;
 	text-align: center;
 	margin-right: 20%;
-	margin-top: 10%;
 }
 
 .event_column{

@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
+	respond_to :html, :js
 	def index
 		@events = Event.all
+		
 	end 
 
 	def show
 		@events = Event.all
 		@event = Event.find(params[:id])
+		
 	end
 
 	def new
@@ -36,5 +39,12 @@ class EventsController < ApplicationController
 	#params to avoid cross side scripting loopholes
   	  def event_params
   	  	params.require(:event).permit(:date,:location,boothlist:[])
+  	  end
+
+  	  def single_event
+  	  	@singleEvent = Event.find(params[:event])
+  	  	respond_to do |format|
+  	  		format.js
+  	  	end
   	  end
 end

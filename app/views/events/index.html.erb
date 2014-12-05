@@ -1,18 +1,17 @@
-<span class ="event-link"><%=link_to "Create New Event", new_event_path%></span>
+<div id="events-form" style="display:inline-block">
+	<h1> Previous Events </h1>
+	<div class ="event-link"><%=link_to "Create New Event", new_event_path%></div>
 
-<div class="booths">
-	<ul class ="users">
-		<%@events.each do |event|%>
-		   <li>
-			  <%=event.date%> | <%=event.location%> <%=link_to "check event", event_path(event)%>
-		   </li>
-		<%end%>
-	</ul>
+	<div class="booths" style="display:inline-block">
+		<ul class ="users">
+			<%@events.each do |event|%>
+			   <li>
+				  <%=event.date%> | <%=event.location%> |
+				  <%=link_to "Booths", event_path(event), remote: true%>
+			   </li>
+			<%end%>
+		</ul>
+	</div>
 </div>
-
-
-		<div class="single-event">
-			<div class="organizations-list">
-			</div>
-		</div>
-	</div> 
+<div id="task-form" style="display:none">
+</div>

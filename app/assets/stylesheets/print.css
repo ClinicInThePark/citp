@@ -1,0 +1,6 @@
+@media print{
+	div#sidebar{
+		display:none;
+
+	}
+}

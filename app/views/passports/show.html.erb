@@ -1,4 +1,28 @@
 <div class="passport">
+	<div class ="front-container" style="width: 300px;
+										 text-align: center;
+										 margin-right: 0%;
+										 font-size: 32px;">
+		Clinic in the Park
+	</div>
+	<div class="front-container">
+		Date: <%=@event.date%>
+	</div>
+
+	<div class="front-container">
+		Name: ________________
+	</div>
+
+	<div class="front-container" style="margin-right: 6%;
+										margin-top: 70%;
+										font-size: 32px;">
+
+		Sponsors
+	</div>
+
+
+</div>
+<div class="passport">
 	<%@event.boothlist.each do |booth_id|%>
 		<%booth = Booth.find(booth_id)%>
 		<div class ="booth-container">
