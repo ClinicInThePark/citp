@@ -7,11 +7,15 @@
 			<%@events.each do |event|%>
 			   <li>
 				  <%=event.date%> | <%=event.location%> |
-				  <%=link_to "Booths", event_path(event), remote: true%>
+				  <%=link_to "Booths", event_path(event), remote: true%> |
+				  <%=link_to "Delete", event_path(event), method: :delete, data: { confirm: "You sure?" } %>
 			   </li>
 			<%end%>
 		</ul>
 	</div>
 </div>
 <div id="task-form" style="display:none">
+</div>
+
+<div id="new_event" style="display:none">
 </div>

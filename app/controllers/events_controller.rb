@@ -14,6 +14,9 @@ class EventsController < ApplicationController
 	def new
 		@event = Event.new
 		@booths = Booth.all
+		if @event.save
+			render 'index'
+		end
 
 	end 
 
@@ -35,6 +38,13 @@ class EventsController < ApplicationController
 		end
 	end 	
 	
+	def destroy
+        event = Event.find(params[:id])
+        event.destroy
+        flash[:success] = "Event deleted"
+        
+    end
+
 	private
 	#params to avoid cross side scripting loopholes
   	  def event_params

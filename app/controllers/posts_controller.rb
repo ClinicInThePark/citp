@@ -20,6 +20,12 @@ class PostsController < ApplicationController
         end
 	end	
 
+	def destroy
+        Event.find(params[:id]).destroy
+        flash[:success] = "Eventdeleted"
+        redirect_to events_url
+    end
+
 
 	private 
 
