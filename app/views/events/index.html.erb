@@ -1,21 +1,32 @@
-<div id="events-form" style="display:inline-block">
-	<h1> Previous Events </h1>
-	<div class ="event-link"><%=link_to "Create New Event", new_event_path%></div>
+<% provide(:title,"All Events") %>
+<h3>All Events</h3>
 
-	<div class="booths" style="display:inline-block">
-		<ul class ="users">
-			<%@events.each do |event|%>
-			   <li>
-				  <%=event.date%> | <%=event.location%> |
-				  <%=link_to "Booths", event_path(event), remote: true%> |
-				  <%=link_to "Delete", event_path(event), method: :delete, data: { confirm: "You sure?" } %>
-			   </li>
-			<%end%>
-		</ul>
+<hr>
+		<span class ="event-link"><%=link_to "Create New Event", new_event_path%>
+		</span>
+		<div class="booths"	display="display:inline-block;">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><b>Date<b></th>
+						<th><b>Location<b></th>
+					</tr>
+				</thead>
+				<%@events.each do |event|%>
+						 <tr>	
+						    <td><%=event.date%></td>
+						    <td><%=event.location%></td>
+						    <td><%=link_to "Booths", event_path(event), remote: true,
+						    	class: "btn btn-default" %></td>
+						    <td><%=link_to "Edit", edit_event_path(event), 
+						    	class: "btn btn-default" %></td>
+						    <td><%= link_to "Delete", event, method: :delete, data: { confirm: "You sure?" },class: "btn btn-default"%></td>
+						 <tr>
+				<%end%>
+			</table>
 	</div>
-</div>
+
+
 <div id="task-form" style="display:none">
 </div>
 
-<div id="new_event" style="display:none">
-</div>

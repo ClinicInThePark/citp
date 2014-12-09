@@ -1,5 +1,5 @@
 @media print{
-	div#sidebar{
+	div.col-sm-3{
 		display:none;
 
 	}

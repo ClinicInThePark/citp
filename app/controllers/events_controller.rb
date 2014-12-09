@@ -20,6 +20,27 @@ class EventsController < ApplicationController
 
 	end 
 
+	def edit
+		@event = Event.find(params[:id])
+		@booths = Booth.all
+	end
+
+	def update
+		@event = Event.find(params[:id])
+        @booths = Booth.all
+		@event.boothlist = []
+			params[:booth_ids].each do |booth|
+				@event.boothlist.push(booth)
+			end
+		if @event.save
+			flash[:now]= "Event updated!"
+			@events = Event.all
+            render 'index'
+        else
+            render 'edit'
+        end
+    end
+
 	#creates a new event,initializes an array in boothlist column, and
 	#puts every checked item from the :booth_ids checkboxes into the array intialized
 	#in the Booth db table. 
