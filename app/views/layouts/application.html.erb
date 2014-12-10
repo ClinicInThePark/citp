@@ -6,33 +6,41 @@
                                            "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>
+
   </head>
   <body>
-
-    <div class="container" style="margin-top:20px;"
-                                 
-      <div class="row">
-        <div class="col-sm-3" style="float: left;
-                                     width: 25%;">
+    <div class="container">
           <!-- static sidebar -->
           <%if signed_in?%>
-            <%= render 'layouts/sidebar' %>
-          <%end%>
-        </div>
-
-        <div class="col-sm-9" style="float: left;
-                                     width: 75%;">
-            <div class="row" style="margin-left:10%;">
-              <% flash.each do |key , value| %>
-                <div class="alert alert-<%= key %>"><%= value %></div>
-              <% end %>
-              <%= yield %>
+            <div class="col-sm-3">
+              <%= render 'layouts/sidebar' %>
             </div>
-        </div>
+          <%end%>
+
+        <%if signed_in?%>
+            <div class="col-sm-9">
+                <div class="row">
+                  <% flash.each do |key , value| %>
+                    <div class="alert alert-<%= key %>"><%= value %></div>
+                  <% end %>
+                  <%= yield %>
+                </div>
+            </div>
+          <%else%>
+                <% flash.each do |key , value| %>
+                  <div class="alert alert-<%= key %>"><%= value %></div>
+                <% end %>
+                  <%= yield %>
+          
+              </div>
+          </div>
+          <%end%>
+
     </div>
-  </row>
+  </div>
+
   <hr>
+
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>

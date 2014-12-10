@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
         @booths = Booth.all
+        @event.update_attributes(event_params)
 		@event.boothlist = []
 			params[:booth_ids].each do |booth|
 				@event.boothlist.push(booth)
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
 		if @event.save
 			flash[:now]= "Event updated!"
 			@events = Event.all
-            render 'index'
+            redirect_to events_path
         else
             render 'edit'
         end
@@ -60,9 +61,9 @@ class EventsController < ApplicationController
 	end 	
 	
 	def destroy
-        event = Event.find(params[:id])
-        event.destroy
+        Event.find(params[:id]).destroy
         flash[:success] = "Event deleted"
+        redirect_to events_path
         
     end
 
@@ -70,12 +71,5 @@ class EventsController < ApplicationController
 	#params to avoid cross side scripting loopholes
   	  def event_params
   	  	params.require(:event).permit(:date,:location,boothlist:[])
-  	  end
-
-  	  def single_event
-  	  	@singleEvent = Event.find(params[:event])
-  	  	respond_to do |format|
-  	  		format.js
-  	  	end
   	  end
 end

@@ -10,7 +10,7 @@ class BoothsController < ApplicationController
 	def create
 		@booth = Booth.new(booth_params)
     	if @booth.save
-	        flash[:success] = "Organization added!"
+	        flash[:now] = "Organization added!"
 	       	redirect_to new_booth_path
     	else
     		render 'new'
@@ -35,6 +35,7 @@ class BoothsController < ApplicationController
     def destroy
         Booth.find(params[:id]).destroy
         flash[:success] = "Booth deleted"
+        redirect_to booths_path
     end
 
 #############################################

@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 20141125231416) do
     t.datetime "updated_at"
   end
 
-  create_table "create_events", force: true do |t|
-    t.date     "date"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", force: true do |t|
     t.date     "date"
     t.string   "location"
