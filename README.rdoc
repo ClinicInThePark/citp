@@ -2,61 +2,10 @@
 
 ===Clinic in the Park, online passport for user tracking. 
 
-===Latest update: 11/12/2014
+===Latest update: 12/9/2014
 
+Improve styling and format for all pages.
 
-===New changes:
-
--Created Passport GUI template (version 1)
-
--Added a created_event template: Admins are able to create a 'event' for citp real life events 
-that takes the date, location, and all the booths, currently in the system, that are attempting. Also links to another
-template for admins to add an organization/booth that is currently not in the system. 
-
--added create_booth template: Admins are able to input a new organization/booth in the system by inputing
-the name, type of service, and a description of the organization. 
-
--Began working on static display sheet that tells visitor accounts what booths will be attending in citp events. 
-
-
-==Things to do: 
-
-===High Priority:
-****EXTREMELY HIGH PRIORITY*****-Create functional checkboxes for create_event sheet to allow the create_event form to send information of what 
-booths will be attending.
-
-How the checkboxes are supposed to work under the hood: 
-
-create_event has a column called boothlist that is an array. This array is supposed to be used in the create_event form in
-order to collect all the checkbox values that have been checked off. Then it could be used by the static display sheet to 
-show what booths will be attending, pre-set by an admin. 
-
-The current problem with the checkboxes: 
-  While debugging, when checkboxes are being checked off, it shows that checkboxes are being put inside the boothlist, 
-  but aftersubmitting the form, the boothlist array is empty. Two possible causes: 
-      1) Either the array needs to be initialized before. Or
-      2) 
-
--AJAX call to validate data and save CSS-transformed-through-Jquery data in the server (High Priority).
-
--Apply functionality for passport field's custom messages when clicked. (High priority). 
-
-===Medium Priority:
-
--Revamp code 
-
-
-=== Low priority
-
--Fix coloring of passport fields for when a user 'visits' a booth. 
-
--refactor Passport GUI code.  
-
-
-  
-  
-  
-
-
+refactor code to improve speed.
 
 <tt>rake doc:app</tt>.
