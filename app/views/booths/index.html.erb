@@ -9,11 +9,13 @@
 				<thead>
 					<tr>
 						<th><b>Organization</b></th>
+						<th><b>Visitors</b></th>
 					</tr>
 				</thead>
 				<%@booths.each do |b|%>
 						 <tr>	
 						    <td><%=b.name%></td>
+						    <td><%=b.visitor_count%></td>
 						    <td><%= link_to "Delete", b, method: :delete, data: { confirm: "You sure?" },
 						    class: "btn btn-default" %></td>
 						    <td><%= link_to "Edit", edit_booth_path(b), class: "btn btn-default" %></td>

@@ -11,14 +11,33 @@ class EventsController < ApplicationController
 		
 	end
 
+	#creates a new event,initializes an array in boothlist column, and
+	#puts every checked item from the :booth_ids checkboxes into the array intialized
+	#in the Booth db table. 
+
 	def new
 		@event = Event.new
 		@booths = Booth.all
 		if @event.save
 			render 'index'
 		end
-
+		
 	end 
+
+	def create
+		@event = Event.new(event_params)
+		@booths = Booth.all
+		@event.boothlist = []
+			params[:booth_ids].each do |booth|
+				@event.boothlist.push(booth)
+			end
+		if @event.save
+			flash[:now]= "Event created!"
+			redirect_to @event 	
+		else
+			render 'new'
+		end
+	end 	
 
 	def edit
 		@event = Event.find(params[:id])
@@ -40,25 +59,7 @@ class EventsController < ApplicationController
         else
             render 'edit'
         end
-    end
-
-	#creates a new event,initializes an array in boothlist column, and
-	#puts every checked item from the :booth_ids checkboxes into the array intialized
-	#in the Booth db table. 
-	def create
-		@event = Event.new(event_params)
-		@booths = Booth.all
-		@event.boothlist = []
-			params[:booth_ids].each do |booth|
-				@event.boothlist.push(booth)
-			end
-		if @event.save
-			flash[:now]= "Event created!"
-			redirect_to @event 	
-		else
-			render 'new'
-		end
-	end 	
+    end	
 	
 	def destroy
         Event.find(params[:id]).destroy

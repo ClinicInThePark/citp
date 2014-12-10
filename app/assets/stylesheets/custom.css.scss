@@ -10,7 +10,7 @@ html{
 
 .container{
   height:800px;
-  width:100%;
+  width:90%;
 }
 
 section{
@@ -192,6 +192,11 @@ input {
   @extend .error;
 }
 
-/* Users index */
+.col-sm-3{
+  width:20%;
+  float:left;
+  margin-right:10%;
+  height: 500px;
+}
 
 
