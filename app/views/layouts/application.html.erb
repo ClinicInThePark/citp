@@ -9,6 +9,7 @@
 
   </head>
   <body>
+  <!-- static top bar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -18,46 +19,36 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Clinic in the Park</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
   </nav>
-    <div class="container">
-        <!-- static sidebar -->
+
+<!-- body container -->
+    <div class="container-fluid">
+        <!-- static sidebar  -->
         <div class="row">
           <%if signed_in?%>
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-md-2 sidebar">
               <%= render 'layouts/sidebar' %>
             </div>
-          
-            <div class="col-sm-9">
-              <div class="row">
-                <% flash.each do |key , value| %>
-                    <div class="alert alert-<%= key %>"><%= value %></div>
-                  <% end %>
-                  <%= yield %>
-              </div>
-            </div>
-          <%else%>
-            <% flash.each do |key , value| %>
-                  <div class="alert alert-<%= key %>"><%= value %></div>
-                  <% end %>
-                  <%= yield %>
           <%end%>
-        </div>
-    </div>
+          <!-- sign in -->
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <% flash.each do |key , value| %>
+                  <div class="alert alert-<%= key %>"><%= value %></div>
+              <% end %>
+              <%= yield %>  
+
+              <br>
+              <div>
+                <%= debug(params) if Rails.env.development? %>
+              </div>
+
+          </div> <!--col-sm-9-->
+        </div> <!--row-->
+    </div> <!--container-fluid-->
 
   <hr>
-
-    <div>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
   </body>
 </html>
