@@ -10,29 +10,18 @@
 	overflow-x:hidden;
 	overflow-y:scroll;
 	border-radius:.3em;
+}
 
-
+.booth{
+	border: 1px solid grey;
+	width:800px;
+	height:300px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	border-radius:.3em;	
 }
 
 .users li{
 	text-align:center;
 }
 
-.panel-default {
-	border-color: #ddd;
-}
-
-.panel {
-	margin-bottom: 20px;
-	background-color: #fff;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-	box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-
-.nav-stacked > li > a {
-	margin-right: 0;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
