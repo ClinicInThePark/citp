@@ -1,15 +1,16 @@
 <% provide(:title,"Sign in") %>
 
-	<div class="span5 offset1">
-		<h1> Clinic in the Park </h1>
-		<%=form_for(:session,url: sessions_path) do |f| %>
+<div class="form-signin">
+	<h2 class="form-signin-heading">Clinic in the Park</h2>
+	<%=form_for(:session,url: sessions_path) do |f| %>
 
-			<%= f.label :email %>
-			<%= f.text_field :email %>
+		<%= f.label :email, class:"sr-only" %>
+		<%= f.text_field :email, class: "form-control", placeholder: "Email address" %>
 
-			<%= f.label :password %>
-			<%= f.password_field :password %>
+		<%= f.label :password,  class:"sr-only" %>
+		<%= f.password_field :password, class: "form-control", placeholder: "Password"  %>
 
-			<%= f.submit "Sign in",class:"btn btn-large btn-primary" %>
-		<% end %>
-	</div>
+		<br>	
+		<%= f.submit "Sign in",class:"btn btn-lg btn-primary btn-block" %>
+	<% end %>
+</div>

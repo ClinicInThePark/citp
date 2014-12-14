@@ -25,30 +25,43 @@
   </nav>
 
 <!-- body container -->
+    <%if signed_in? %>
     <div class="container-fluid">
         <!-- static sidebar  -->
         <div class="row">
-          <%if signed_in?%>
             <div class="col-sm-3 col-md-2 sidebar">
               <%= render 'layouts/sidebar' %>
             </div>
-          <%end%>
           <!-- sign in -->
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <% flash.each do |key , value| %>
                   <div class="alert alert-<%= key %>"><%= value %></div>
               <% end %>
-              <%= yield %>  
-
+              <%= yield %>
               <br>
               <div>
                 <%= debug(params) if Rails.env.development? %>
-              </div>
-
+              </div> 
           </div> <!--col-sm-9-->
         </div> <!--row-->
     </div> <!--container-fluid-->
+    <%else%>
+    <div class="container">
+      <%= yield %>  
+    </div>
+    <%end%>
 
   <hr>
+
+  <script type="text/javascript">
+      $(document).ready(function(e){
+      $(".sidebar li").click(function(){
+        $(".sidebar li").removeClass("active");
+        $(this).addClass("active");
+        
+     });
+    });
+  </script> 
+
   </body>
 </html>

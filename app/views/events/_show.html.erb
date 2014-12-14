@@ -1,11 +1,20 @@
-<div class ="event-link"><%=link_to "Generate a Passport for this event",passport_path(@event)%> </div>
-<div class="events" style="margin-left:0px">
-	<link rel="stylesheet" type="text/css" media="print" href="print.css">
-	<h3>Booths attending <%=@event.date%> event</h3>
-	<%@event.boothlist.each do |booth_id|%>
-		<%booth = Booth.find(booth_id)%>
-	<ul class ="users">
-		<li>BoothName: <%=booth.name%> <br> Description: <%=booth.description%></li>
-	</ul>
-	<%end%>
-</div>
+<% provide(:title,"All Organizations") %>
+<h3>Attending Booths</h3>
+
+	<div class="creation" style="padding-left:25px"><%=link_to "Generate Passport", passport_path(@event), class: "btn btn-large btn-primary"%></div>
+		<div class="booths" style="width:200px">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><b>Booths attending <%=@event.date%> event</b></th>
+					</tr>
+				</thead>
+				<%@event.boothlist.each do |booth_id|%>
+					<%booth = Booth.find(booth_id)%>
+						 <tr>	
+						    <td><%=booth.name%></td>
+						 <tr>
+				<%end%>
+			</table>
+	</div>
+</hr>

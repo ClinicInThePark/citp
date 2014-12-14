@@ -1,34 +1,33 @@
 <% provide(:title ,"New Event") %>
-<div id="dialog_form">
-	<h3>New Event</h3>
 
-	<div class="row">
-		<div class="span6 offset3" style="margin-left:100px;">
-			<%= form_for(@event) do |f| %>
-				<%= render 'shared/error_messages', object: f.object %> 
+<h3>New Event</h3>
 
-				<%=f.label :date %> 
-				<%=f.date_field :date %>
+<div class="form">
+	<div class="form-group">
+		<%= form_for(@event) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %> 
 
-				<%=f.label :Location %>
-				<%=f.text_field :location %> 
+			<%=f.label :date %> 
+			<%=f.date_field :date %>
 
-				<%=f.label :Attending_Organizations%>
-				
-				<div id="new-event-form"> 	
-					<% @booths.each do |booth|%>
-						<%=check_box_tag "booth_ids[]", booth.id%>
-						<%=f.label booth.name,:class=>"checkbox inline" %>
-						<br>
-					<%end%>
-				</div>
+			<%=f.label :Location %>
+			<%=f.text_field :location %> 
 
-				<br>
-				Organization not found? <%=link_to "Add an organization!", new_booth_path%>
-				<br><br>
-				<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
+			<%=f.label :Attending_Organizations%>
+			
+			<div id="new-event-form"> 	
+				<% @booths.each do |booth|%>
+					<%=check_box_tag "booth_ids[]", booth.id%>
+					<%=f.label booth.name %>
+					<br>
+				<%end%>
+			</div>
 
-			<% end %>
-		</div>
+			<br>
+			Organization not found? <%=link_to "Add an organization!", new_booth_path%>
+			<br><br>
+			<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
+
+		<% end %>
 	</div>
 </div>

@@ -13,14 +13,14 @@
 		    <td><%=event.location%></td>
 		    <td><%=event.total_count%></td>
 		    <td><%=link_to "Booths", event_path(event), remote: true, 
-		    	class: "btn btn-default" %></td>
+		    	class: "btn btn-primary" %></td>
 
 		    <td><%=link_to "Edit", edit_event_path(event), 
-		    	class: "btn btn-default" %></td>
+		    	class: "btn btn-primary" %></td>
 
-		    <td id="delete"><%= link_to "Delete", event, html: {method: :delete}, data: 
-		    	{ confirm: "You sure?" }, remote:true, 
-		     	class: "btn btn-default"%></td>
+		    <td><%= link_to "Delete", event, method: :delete, data: 
+		    	{ confirm: "You sure?" }, 
+		     	class: "btn btn-primary"%></td>
 
 		 </tr>
 	<%end%>

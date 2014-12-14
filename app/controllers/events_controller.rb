@@ -18,9 +18,7 @@ class EventsController < ApplicationController
 	def new
 		@event = Event.new
 		@booths = Booth.all
-		if @event.save
-			render 'index'
-		end
+		
 		
 	end 
 
@@ -33,7 +31,8 @@ class EventsController < ApplicationController
 			end
 		if @event.save
 			flash[:now]= "Event created!"
-			redirect_to @event 	
+			@events = Event.all
+			redirect_to events_path	
 		else
 			render 'new'
 		end
@@ -47,7 +46,7 @@ class EventsController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
         @booths = Booth.all
-        @event.update_attributes(event_params)
+        @event.update(event_params)
 		@event.boothlist = []
 			params[:booth_ids].each do |booth|
 				@event.boothlist.push(booth)
@@ -65,7 +64,7 @@ class EventsController < ApplicationController
         Event.find(params[:id]).destroy
         flash[:success] = "Event deleted"
         @events = Event.all
-        render 'index'
+        redirect_to events_path
         
        
         
