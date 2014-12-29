@@ -1,12 +1,20 @@
 <% provide(:title,"All Organizations") %>
-<h3>Attending Booths</h3>
 
-	<div class="creation" style="padding-left:25px"><%=link_to "Generate Passport", passport_path(@event), class: "btn btn-large btn-primary"%></div>
-		<div class="booths" style="width:200px">
+<div style="width: 300px;
+	margin-left: 12%;
+	margin-top: 5px;
+	border: 1px solid;
+	border-radius: .5em;
+	text-align: center;">
+<%=@event.date%> <%=@event.location%>
+</div>
+<br>
+		
+		<div class="booths" style="width: 300px; height: 250px; margin: auto;">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th><b>Booths attending <%=@event.date%> event</b></th>
+						<th><b>Organizations</b></th>
 					</tr>
 				</thead>
 				<%@event.boothlist.each do |booth_id|%>
@@ -16,5 +24,8 @@
 						 <tr>
 				<%end%>
 			</table>
-	</div>
+			</div>
+			<div class="creation" style="margin-top: 5px; float: right; margin-right: 10px;"><%=link_to "Print Passport", passport_path(@event), class: "btn btn-large btn-primary"%></div>
+		</div>
+			
 </hr>

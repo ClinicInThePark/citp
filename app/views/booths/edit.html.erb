@@ -1,17 +1,21 @@
-<% provide(:title ,"Edit Booth") %>
-<h1> Update Booth: <%=@booth.name%></h1>
+<% provide(:title ,"Edit Organization") %>
 
-<div class="row">
-	<div class="span6 offset3" style="margin-left:100px;">
+<div class="new-edit-form">
+<div class="form">
+	<div class="form-group">
+		<h3 class="new-edit">Organization: <%=@booth.name%></h3>
 		<%= form_for(@booth) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %> 
-			<%=f.label :Name%>
-			<%=f.text_field :name%>
-			<%=f.label :Description %>
-			<%=f.text_field :description %>
 
-			<%=f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+			<%=f.label :Name %>
+			<%=f.text_field :name, class:"form-control" %>
+			<br>
+			<%=f.label :Description %>
+			<%=f.text_area :description, class:"form-control" %>
+			<br>
+			<%=f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 		<% end %>
 	</div>
 </div>
+

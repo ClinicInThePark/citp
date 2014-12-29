@@ -24,7 +24,7 @@ class BoothsController < ApplicationController
 	def update
         @booth = Booth.find(params[:id])
         if @booth.update_attributes(booth_params)
-            flash[:successful] = "Booth update successful"
+            flash[:now] = "Booth update successful"
             @booths = Booth.all
             render 'index'
         else
@@ -34,7 +34,7 @@ class BoothsController < ApplicationController
 
     def destroy
         Booth.find(params[:id]).destroy
-        flash[:success] = "Booth deleted"
+        flash[:now] = "Booth deleted"
         redirect_to booths_path
     end
 

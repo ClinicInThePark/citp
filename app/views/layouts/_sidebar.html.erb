@@ -1,5 +1,23 @@
 <ul class="nav nav-sidebar">
 	<li><%=link_to "Events", events_path%></li>
 	<li><%=link_to "Booths", booths_path%></li>     
-	<li><%=link_to "Log out", signout_path, method: "delete" %></li>
 </ul>
+
+
+<!--highlights the sidebar tab the user is currently on-->
+<script type="text/javascript">
+    $(function() {
+        // this will get the full URL at the address bar
+        var url = window.location.href;
+
+        // passes on every "a" tag
+        $(".nav a").each(function() {
+            // checks if its the same on the address bar
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+            }
+        });
+    });   
+
+
+</script>

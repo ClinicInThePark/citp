@@ -1,26 +1,30 @@
 <% provide(:title ,"New Event") %>
 
-<h3>New Event</h3>
-
+<div class="new-edit-form">
 <div class="form">
 	<div class="form-group">
+		<h3 class="new-edit">New Event</h3>
 		<%= form_for(@event) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %> 
 
-			<%=f.label :date %> 
-			<%=f.date_field :date %>
-
+			<%=f.label :date%> 
+			<%=f.date_field :date, class:"form-control" %>
+			<br>
 			<%=f.label :Location %>
-			<%=f.text_field :location %> 
-
+			<%=f.text_field :location, class:"form-control", placeholder:"OC Great Park" %> 
+			<br>
 			<%=f.label :Attending_Organizations%>
-			
-			<div id="new-event-form"> 	
+
+			<div id="new-event-form">
+			<div class="checkbox"> 	
+				<label>
 				<% @booths.each do |booth|%>
 					<%=check_box_tag "booth_ids[]", booth.id%>
 					<%=f.label booth.name %>
 					<br>
 				<%end%>
+				</label>
+			</div>
 			</div>
 
 			<br>
@@ -31,3 +35,4 @@
 		<% end %>
 	</div>
 </div>
+</div> 

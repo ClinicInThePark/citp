@@ -1,5 +1,11 @@
 $('#task-form').html("<%= escape_javascript(render 'show') %>");
-$('#task-form').css("display","inline-block");
-$('#task-form').css("margin-top","-38.3%");
-$('#task-form').css("float","right");
+$('#task-form').css({
+	'display': 'inline-block',
+	'margin-top': '-29.9%',
+	'float': 'right',
+	'width': '400px',
+	'height': '350px',
+	'border': '1px solid grey',
+	'border-radius': '.5em'				
+});
 $('#task-form').slideDown(360);

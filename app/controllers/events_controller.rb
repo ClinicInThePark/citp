@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 				@event.boothlist.push(booth)
 			end
 		if @event.save
-			flash[:now]= "Event created!"
+			flash[:success	]= "Event created!"
 			@events = Event.all
 			redirect_to events_path	
 		else
