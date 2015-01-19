@@ -1,4 +1,5 @@
 class Booth < ActiveRecord::Base
-	belongs_to :events
+	has_many :attendances
+	has_many :events, :through => :attendances
 
 end

@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 	def new
 		@event = Event.new
 		@booths = Booth.all
-		
+		 
 		
 	end 
 
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 				@event.boothlist.push(booth)
 			end
 		if @event.save
-			flash[:success	]= "Event created!"
+			flash[:success]= "Event created!"
 			@events = Event.all
 			redirect_to events_path	
 		else
