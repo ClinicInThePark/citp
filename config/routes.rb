@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :booths
   resources :events
   resources :passports
+  resources :attendances do
+    collection {post :import}
+  end
  
   
 
@@ -27,3 +30,4 @@ Rails.application.routes.draw do
 
 
 end
+

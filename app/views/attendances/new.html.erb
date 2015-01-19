@@ -1,0 +1,17 @@
+<h2>Import an Excel file</h2>
+<%= form_tag attendances_path(@event),multipart: true do %>
+	<%=file_field_tag :file%>
+	<%= submit_tag "Import" %>
+<%end%>
+<br>
+
+<%=form_tag(attendances_path(@event), method:"post") do |f|%>
+
+	<%@event.boothlist.each do |booth|%>
+		<%booth = Booth.find(booth)%>
+		<%id = booth.id.to_s%>
+		<%=booth.name%> <%=text_field_tag "booth_ids["+id+"]"%></td><br>
+	<%end%>
+
+	<%=submit_tag ("Update"), class: "btn btn-large btn-primary" %>
+<%end%>

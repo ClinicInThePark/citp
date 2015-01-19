@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-	has_many :booths
+	has_many :attendances
+	has_many :booths, :through => :attendances
 
 	#used to allow storage of arrays in db
 	serialize :boothlist
@@ -8,3 +9,4 @@ class Event < ActiveRecord::Base
 	validates :location, presence: true
 	
 end
+
