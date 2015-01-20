@@ -1,12 +1,10 @@
 class Attendance < ActiveRecord::Base
-	attr_accessible :name, :price, :release_on
-
 	belongs_to :event
 	belongs_to :booth
 
 	validates :booth_id, presence: true
 	validates :booth_attendance, presence: true
-
+	
 	def self.to_csv(options = {})
 		CSV.generate do |csv|
 			csv <<column_names

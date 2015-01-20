@@ -1,9 +1,9 @@
-<h2>Import an Excel file</h2>
-<%= form_tag attendances_path(@event),multipart: true do %>
-	<%=file_field_tag :file%>
-	<%= submit_tag "Import" %>
-<%end%>
-<br>
+<h2>Event Attendance </h2>
+<p>
+Download:
+<%=link_to "CSV",attendances_path(format:"csv")%>
+<%=link_to "Excel",attendances_path(format:"xls")%>
+</p>
 
 <%=form_tag(attendances_path(@event), method:"post") do |f|%>
 
@@ -15,3 +15,11 @@
 
 	<%=submit_tag ("Update"), class: "btn btn-large btn-primary" %>
 <%end%>
+
+<h2>Import an Excel file</h2>
+<p><%= form_tag attendances_path(@event),multipart: true do %>
+	<%=file_field_tag :file%>
+	<%= submit_tag "Import" %>
+<%end%>
+</p>
+<br>

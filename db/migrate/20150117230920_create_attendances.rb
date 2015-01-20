@@ -3,7 +3,7 @@ class CreateAttendances < ActiveRecord::Migration
     create_table :attendances do |t|
       t.belongs_to :event, index: true
       t.belongs_to :booth, index: true
-      t.integer :booth_attendance
+      t.integer :booth_attendance, default:0
       t.timestamps null: false
     end
   end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users 
   resources :sessions, only: [:new,:create,:destroy]
   resources :booths
-  resources :events
+  resources :events 
   resources :passports
   resources :attendances do
     collection {post :import}
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   match '/signout',      to: 'sessions#destroy', 		    via: 'delete'
   match '/signup',	     to: 'users#new',				        via: 'get'
   match '/home',         to: 'sessions#index',          via: 'get'
+  match '/booth_attendance/:id',   to:'events#show', as: 'booth_attendance', via:'post'
 
 
 end

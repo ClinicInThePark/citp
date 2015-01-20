@@ -2,14 +2,19 @@ class EventsController < ApplicationController
 	respond_to :html, :js
 	def index
 		@events = Event.all
-		
+
 	end 
 
 	def show
-		@events = Event.all
 		@event = Event.find(params[:id])
 		
 	end
+
+	def booth_attendance
+		@event = Event.find(params[:id])
+	end
+
+
 
 	#creates a new event,initializes an array in boothlist column, and
 	#puts every checked item from the :booth_ids checkboxes into the array intialized
