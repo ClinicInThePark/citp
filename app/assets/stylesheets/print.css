@@ -1,6 +1,43 @@
 @media print{
-	div.col-sm-3{
+	.col-sm-3{
 		display:none;
-
 	}
+
+	.front-container{
+		width: 200px;
+		height: 100px;
+		transform: rotate(90deg);
+		float: right;
+		margin-top:20%;
+	}
+
+	.sticker-field{
+		margin: auto;
+		width: 70px;
+		height: 70px;
+		border: 1px solid black;
+		border-radius: .5em;
+	}
+	.passport{
+		margin-top: -60px;
+		border: 1px solid black;
+		width: 900px;
+		height: 1200px;
+	}
+
+	.booth-info{
+		margin: 0 auto;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.booth-container{
+		width: 150px;
+		height: 100px;
+		padding-left: 30px;
+		transform: rotate(90deg);
+		float: right;
+		margin-bottom: 50px;
+	}
+
 }

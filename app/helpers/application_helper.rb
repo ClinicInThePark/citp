@@ -8,12 +8,5 @@ module ApplicationHelper
 		end
 	end
 
-	def check_booth_for_attendance(b)
-		unless b.nil?
-			return b
-		else
-			return "0"
-		end
-	end
 end
 

@@ -1,7 +1,7 @@
 <% provide(:title,"All Organizations") %>
 
 <div style="width: 300px;
-	margin-left: 12%;
+	margin: auto;
 	margin-top: 5px;
 	border: 1px solid;
 	border-radius: .5em;
@@ -10,7 +10,7 @@
 </div>
 <br>
 		
-		<div class="booths" style="width: 300px; height: 250px; margin: auto;">
+		<div class="booths" style="width: 320px; height: 225px; margin: auto;">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -21,15 +21,22 @@
 					<%booth = Booth.find(booth_id)%>
 						 <tr>	
 						    <td><%=booth.name%>
-						    	(<%=booth.attendances.find_by(event_id:@event.id).booth_attendance%>)
+						    	<%if booth.attendances.find_by(event_id:@event.id) != nil%> 
+						    		<%=booth.attendances.find_by(event_id:@event.id).booth_attendance%>
+						    	<%else%>
+						    		<%=0%>
+						    	<%end%>
 						    </td>
-						 <tr>
+						 </tr>
 				<%end%>
 			</table>
 			</div>
 			<div class="creation" style="margin-top: 5px; float: right; margin-right: 10px;"><%=link_to "Print Passport", passport_path(@event), class: "btn btn-large btn-primary"%></div>
 
 			<div class="creation" style="margin-top: 5px; float: right; margin-right: 10px;"><%=link_to "Add Attendance", attendance_path(@event), class: "btn btn-large btn-primary"%></div>
+
+			<div class="creation" style="margin-top: 5px; float: right; margin-right: 10px;"><%=link_to "Excel", event_path(format:"xls"), class: "btn btn-large btn-primary"%></div>
+			
 
 		</div>
 			

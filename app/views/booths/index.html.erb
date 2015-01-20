@@ -14,7 +14,7 @@
 				</thead>
 				<%@booths.each do |b|%>
 						 <tr>	
-						    <td><%=b.name%></td>
+						    <td><%=link_to b.name, b%></td>
 						    <td><%= link_to "Delete", b, method: :delete, data: { confirm: "You sure?" },
 						    class: "btn btn-primary" %></td>
 						    <td><%= link_to "Edit", edit_booth_path(b), class: "btn btn-primary" %></td>

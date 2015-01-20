@@ -8,11 +8,11 @@
 }
 
 .sticker-field{
-	margin: 10px;
-	margin-left:20px;
-	width:30px;
-	height:30px;
-	border:1px solid black;
+	margin: auto;
+	width: 70px;
+	height: 70px;
+	border: 1px solid black;
+	border-radius: .5em;
 }
 .passport{
 	margin-top: -60px;
@@ -22,8 +22,9 @@
 }
 
 .booth-info{
-	display:inline;
-	margin-top: 5%;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
 }
 
 .booth-container{

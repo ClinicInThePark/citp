@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	respond_to :html, :js
+	
 	def index
 		@events = Event.all
 
@@ -7,11 +7,14 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
-		
-	end
-
-	def booth_attendance
-		@event = Event.find(params[:id])
+		@attendance = @event.attendances.all
+		respond_to do |format|
+			format.html
+			format.js
+			format.csv {send_data @attendance.to_csv}
+			format.xls
+		end
+	
 	end
 
 

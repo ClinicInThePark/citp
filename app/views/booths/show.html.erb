@@ -1,0 +1,5 @@
+Date, Booth attendance<br>
+<%@attendance.each do |a| %>
+	<%=Event.find_by(id:a.event_id).date%>,<%=a.booth_attendance%><br>
+<%end%>
+

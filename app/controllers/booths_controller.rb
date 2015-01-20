@@ -17,6 +17,12 @@ class BoothsController < ApplicationController
     	end
 	end
 
+    def show
+        @booth = Booth.find(params[:id])
+        @attendance = @booth.attendances.all
+    end
+
+
 	def edit
 		@booth = Booth.find(params[:id])
 	end

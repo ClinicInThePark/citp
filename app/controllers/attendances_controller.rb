@@ -4,7 +4,7 @@ class AttendancesController < ApplicationController
 	end
 
 	def create
-		@event = Event.find_by(params[:id])
+		@event = Event.find(params[:format])
 		params[:booth_ids].each do |b_id,b_attendance|
 			@event.attendances.create(booth_id:b_id,booth_attendance:b_attendance)
 		end
@@ -13,7 +13,7 @@ class AttendancesController < ApplicationController
 	end
 
 	def show 
-		@event = Event.find_by(params[:id])
+		@event = Event.find(params[:id])
 		@attendance = @event.attendances.all
 		respond_to do |format|
 			format.html 

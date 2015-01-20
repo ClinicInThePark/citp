@@ -1,9 +1,4 @@
-<h2>Event Attendance </h2>
-<p>
-Download:
-<%=link_to "CSV",attendance_path(format:"csv")%>
-<%=link_to "Excel",attendance_path(format:"xls")%>
-</p>
+<h2>Input event Attendance </h2>
 
 <%=form_tag(attendances_path(@event), method:"post") do |f|%>
 

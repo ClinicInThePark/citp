@@ -8,5 +8,14 @@ class Event < ActiveRecord::Base
 	validates :date, presence: true
 	validates :location, presence: true
 	
+	def self.to_csv(options = {})
+		CSV.generate do |csv|
+			csv <<column_names
+			all.each do |product|
+				csv <<product.attributes.values_at(*column_names)
+			end
+		end
+	end
+	
 end
 
