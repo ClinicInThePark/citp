@@ -1,15 +1,23 @@
 class EventsController < ApplicationController
-	respond_to :html, :js
+	
 	def index
 		@events = Event.all
-		
+
 	end 
 
 	def show
-		@events = Event.all
 		@event = Event.find(params[:id])
-		
+		@attendance = @event.attendances.all
+		respond_to do |format|
+			format.html
+			format.js
+			format.csv {send_data @attendance.to_csv}
+			format.xls
+		end
+	
 	end
+
+
 
 	#creates a new event,initializes an array in boothlist column, and
 	#puts every checked item from the :booth_ids checkboxes into the array intialized
@@ -18,7 +26,7 @@ class EventsController < ApplicationController
 	def new
 		@event = Event.new
 		@booths = Booth.all
-		
+		 
 		
 	end 
 
@@ -30,7 +38,7 @@ class EventsController < ApplicationController
 				@event.boothlist.push(booth)
 			end
 		if @event.save
-			flash[:success	]= "Event created!"
+			flash[:success]= "Event created!"
 			@events = Event.all
 			redirect_to events_path	
 		else
@@ -76,3 +84,4 @@ class EventsController < ApplicationController
   	  	params.require(:event).permit(:date,:location,boothlist:[])
   	  end
 end
+

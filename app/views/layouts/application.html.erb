@@ -42,14 +42,14 @@
           <!-- sign in -->
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <% flash.each do |key , value| %>
-                  <!--<div class="alert alert-<%= key %>"><%= value %></div>-->
-                  <div class="bg-warning"><%= value %></div>
+                  <div class="alert alert-<%= key %>"><%= value %></div>
+                  
               <% end %>
               <%= yield %>
               <br>
-              <!--<div>
+              <div>
                 <%= debug(params) if Rails.env.development? %>
-              </div>--> 
+              </div>
           </div> <!--col-sm-9-->
         </div> <!--row-->
     </div> <!--container-fluid-->
