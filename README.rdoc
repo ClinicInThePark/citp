@@ -1,11 +1,15 @@
 == README
 
-===Clinic in the Park, online passport for user tracking. 
+===Web Application for tracking/analyzing event statistics for non-profit organization Clinic in the Park.
 
-===Latest update: 12/9/2014
+===Latest update: 1/21/2014
+To Do:
 
-Improve styling and format for all pages.
 
-refactor code to improve speed.
+-Improve styling and format for all pages.
+
+-refactor code to improve speed.
+
+-refactor design attendance-event relationship.
 
 <tt>rake doc:app</tt>.
