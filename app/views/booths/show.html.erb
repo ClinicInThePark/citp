@@ -1,5 +1,22 @@
-Date, Booth attendance<br>
-<%@attendance.each do |a| %>
-	<%=Event.find_by(id:a.event_id).date%>,<%=a.booth_attendance%><br>
-<%end%>
+<td><%= link_to "Delete", @booth, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %></td>
+<td><%= link_to "Edit", edit_booth_path(@booth), class: "btn btn-primary" %></td>
 
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Attendance</th>
+            <th>Service</th>
+        </tr>
+    </thead>
+    <tbody>
+    <%@attendance.each do |a| %>
+        <tr>
+        	<td><%=Event.find_by(id: a.event_id)%></td>
+        	<td><%=a.booth_attendance%></td>
+        	<td><%=a.service%></td>
+    	</tr>
+    <%end%>
+    </tbody>
+</table>

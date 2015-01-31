@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120023057) do
+ActiveRecord::Schema.define(version: 20150128144457) do
 
   create_table "attendances", force: true do |t|
     t.integer  "event_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150120023057) do
     t.integer  "booth_attendance", default: 0
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "service"
   end
 
   add_index "attendances", ["booth_id"], name: "index_attendances_on_booth_id"
@@ -33,19 +34,12 @@ ActiveRecord::Schema.define(version: 20150120023057) do
     t.integer  "visitor_count", default: 0
   end
 
-  create_table "create_events", force: true do |t|
-    t.date     "date"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", force: true do |t|
     t.date     "date"
     t.string   "location"
+    t.string   "boothlist"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "boothlist"
     t.integer  "total_count", default: 0
   end
 
@@ -54,6 +48,17 @@ ActiveRecord::Schema.define(version: 20150120023057) do
     t.datetime "updated_at"
   end
 
+  create_table "relationships", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "booth_id"
+    t.integer  "attendance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "relationships", ["booth_id"], name: "index_relationships_on_booth_id"
+  add_index "relationships", ["event_id"], name: "index_relationships_on_event_id"
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -61,10 +66,7 @@ ActiveRecord::Schema.define(version: 20150120023057) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",             default: false
-    t.string   "activation_digest"
-    t.boolean  "activated",         default: false
-    t.datetime "activation_at"
+    t.boolean  "admin",           default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

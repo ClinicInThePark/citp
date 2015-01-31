@@ -6,7 +6,7 @@ class AttendancesController < ApplicationController
 	def create
 		@event = Event.find(params[:format])
 		params[:booth_ids].each do |b_id,b_attendance|
-			@event.attendances.create(booth_id:b_id,booth_attendance:b_attendance)
+			@event.attendances.create(booth_id:b_id,booth_attendance:b_attendance,service:Booth.find_by(id:b_id).service)
 		end
 		flash[:success] = "Successfully added attendance"
 		redirect_to events_path

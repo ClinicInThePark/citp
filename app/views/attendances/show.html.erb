@@ -5,7 +5,8 @@
 	<%@event.boothlist.each do |booth|%>
 		<%booth = Booth.find(booth)%>
 		<%id = booth.id.to_s%>
-		<%=booth.name%> <%=text_field_tag "booth_ids["+id+"]"%></td><br>
+		<%=booth.name%> <%=text_field_tag "booth_ids["+id+"]"%><br>
+		
 	<%end%>
 
 	<%=submit_tag ("Update"), class: "btn btn-large btn-primary" %>
