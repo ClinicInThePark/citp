@@ -1,40 +1,178 @@
+<% provide(:title,"Passport") %>
+
+<!-- layout for the print view-->
+
+<!--uploading an image to the title-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+  <form>
+    <input id="file" type="file" name="files[]" onchange="readURL(this);">
+  </form>
+
+
+<a href="javascript:window.print()">Print Passport</a>
+<!--uploading an image to the title-->
+
+<!-- display of the image slider -->
+<div class="slidebox">
+  <ul id="slider">
+    <li><h3>Clinic in the Park</h3></p>
+      <div id="Image_1" class="imageSection" style="margin:auto;margin-top: 20px;margin-bottom: 20px;"><img id="img_1" alt="" width="200px" height="200px" name="img_1"></div>
+    	<div style="margin:auto 50px">Name: ________________</div><br>
+    	<div style="margin:auto">Date: <%=@event.date%></div>
+    </li>
+    <li>
+		<%@event.boothlist.each do |booth_id|%>
+			<%booth = Booth.find(booth_id)%>
+			<div class ="booth-container">
+				<div class="sticker-field">
+				</div>
+				<div class="booth-info">
+					<%=booth.name%>					
+				</div>
+			</div>
+		<%end%>
+	</li>
+    <li></li>
+    <li>Sponsors</li>
+  </ul>
+
+  <ul id="dots">   
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+
+  <button id="prev">Prev</button>
+  <button id="next">Next</button>
+</div>
+
+<!-- display of the image slider -->
+
+
+<!--print view for the passport, display set to none-->
 <div class="passport">
-	<div class ="front-container" style="width: 300px;
-										 text-align: center;
-										 margin-right: 0%;
-										 font-size: 32px;">
-		Clinic in the Park
-	</div>
-	<div class="front-container">
-		Date: <%=@event.date%>
-	</div>
+  <div class ="front-container" style="width: 200px;
+                                      height:200px;
+                     text-align: center;
+                     margin-right: 0%;
+                     margin-top:2%;
+                     font-size:32px;">
+    Clinic in the Park
+  </div>
+  <div class="front-container" style="width:200px; height:200px">
+    <div id="Image_1" class="imageSection"><img id="img_1" alt="" width="200px" height="200px" name="img_1"></div>
+  </div>
+  <br>
 
-	<div class="front-container">
-		Name: ________________
-	</div>
+  <div class="front-container">
+    <p>Date: <%=@event.date%></p>
+    <p>Name: ________________</p>
+  </div>
 
-	<div class="front-container" style="margin-right: 6%;
-										margin-top: 70%;
-										font-size: 32px;">
+  <div class="front-container">
+  </div>
 
-		Sponsors
-	</div>
-
-
+  <div class="front-container" style="margin-right: 6%;
+                    margin-top: 70%;
+                    font-size: 32px;">
+    Sponsors
+  </div>
 </div>
 <br>
-<br>
-<br>
-<div class="passport">
-	<%@event.boothlist.each do |booth_id|%>
-		<%booth = Booth.find(booth_id)%>
-		<div class ="booth-container">
-			<div class="sticker-field">
-			</div>
-			<div class="booth-info">
-				<%=booth.name%>
-				<!--<%=booth.description%>-->
-			</div>
-		</div>
-	<%end%>
+
+<div class="innerPages">
+  <%@event.boothlist.each do |booth_id|%>
+    <%booth = Booth.find(booth_id)%>
+    <div class ="booth-container">
+      <div class="sticker-field">
+      </div>
+      <div class="booth-info">
+        <%=booth.name%>     
+      </div>
+    </div>
+  <%end%>
 </div>
+
+<!-- layout for the print view-->
+
+<!-- jquery for image slider -->
+<script>
+$(document).ready(function () {
+
+  var change_img_time = 4000,
+      transition_speed = 100;
+
+  var listItems = $("#slider").children('li'),
+      dotItems = $('#dots').children('li'),
+      listLen = listItems.length,
+      current,
+      changeTimeout;
+
+  function moveTo(newIndex) {
+
+    var i = newIndex;
+
+    if (newIndex == 'prev') {
+        i = (current > 0) ? (current - 1) : (listLen - 1);
+    }
+
+    if (newIndex == 'next') {
+        i = (current < listLen - 1) ? (current + 1) : 0;
+    }
+
+    dotItems.removeClass('active')
+            .eq(i).addClass('active');
+
+    listItems.fadeOut(transition_speed)
+    listItems.eq(i).fadeIn(transition_speed);
+
+    current = i;
+
+    //resets time interval if user clicks on slider dot; then begin automated slider
+
+  };
+
+  // Event handlers
+  $("#dots li").click(function () {
+    var i = $('#dots li').index(this);
+    moveTo(i);
+  });
+
+  $("#prev").click(function () {
+    moveTo('prev');
+  });
+
+  $("#next").click(function () {
+    moveTo('next');
+  });
+  
+  //initialize slider on load
+  moveTo('next');
+});
+</script>
+
+<!-- jquery for image slider -->
+
+<script>
+$(".imageSection button").click(function() {
+    $(".imageSection img").removeClass("activeImage");
+    $(this).parent().find("img").addClass("activeImage");
+    $(this).parent().find("img").addClass("activeImage");
+});
+$(".imageSection:eq(0) img").addClass("activeImage");
+$(".imageSection:eq(1) img").addClass("activeImage");
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.prw_img,.activeImage').attr('src', e.target.result).width(212).height(212);
+            $('.activeImage').css('display', 'inline');
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>

@@ -1,0 +1,36 @@
+.slidebox {
+  width: 800px;
+  margin: 60px auto;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#slider {
+  margin: 0 auto;
+  list-style: none;
+  position: relative;
+  width: 600px;
+  height: 500px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#dots {
+  list-style:none;
+  padding:0px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+
+}
+#dots li {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid grey;
+  background: white;
+  cursor: pointer;
+}
+#dots li.active {
+  background:grey;
+}
+

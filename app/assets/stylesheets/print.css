@@ -1,14 +1,41 @@
 @media print{
-	.col-sm-3{
+	#print-button{
+		display:none;
+	}
+	.passport{
+		display:block;
+		width: 800px;
+		height: 1100px;
+	}
+	form{
 		display:none;
 	}
 
+	a{
+		display:none;
+	}
+	.col-sm-3{
+		display:none;
+	}
+	.imageSection{
+		display:block;
+		margin-bottom:30px;
+		border: none;
+	}
 	.front-container{
-		width: 200px;
+		display:block;
+		width: 160px;
 		height: 100px;
 		transform: rotate(90deg);
 		float: right;
-		margin-top:20%;
+		margin-top:3%;
+		margin-right:5%;
+	}
+	
+	.innerPages{
+		display:block;
+		width: 800px;
+		height: 1200px;	
 	}
 
 	.sticker-field{
@@ -17,12 +44,6 @@
 		height: 70px;
 		border: 1px solid black;
 		border-radius: .5em;
-	}
-	.passport{
-		margin-top: -60px;
-		border: 1px solid black;
-		width: 900px;
-		height: 1200px;
 	}
 
 	.booth-info{
@@ -39,5 +60,10 @@
 		float: right;
 		margin-bottom: 50px;
 	}
+
+	.slidebox{
+		display:none;
+	}
+	
 
 }

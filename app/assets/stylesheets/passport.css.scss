@@ -1,5 +1,5 @@
-
 .front-container{
+	display:none;
 	width: 200px;
 	height: 100px;
 	transform: rotate(90deg);
@@ -15,23 +15,28 @@
 	border-radius: .5em;
 }
 .passport{
-	margin-top: -60px;
-	border: 1px solid black;
+	display:none;
 	width: 900px;
 	height: 1200px;
+}
+
+.innerPages{
+	display:none;
+	width: 900px;
+	height: 1200px;	
 }
 
 .booth-info{
 	margin: 0 auto;
 	padding: 10px;
 	text-align: center;
+	font-size:12px;
 }
 
 .booth-container{
-	width: 150px;
+	width: 100px;
 	height: 100px;
 	padding-left: 30px;
-	transform: rotate(90deg);
-	float: right;
+	float: left;
 	margin-bottom: 50px;
 }
