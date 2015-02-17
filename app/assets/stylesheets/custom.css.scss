@@ -163,11 +163,6 @@ color: #84A73B;
 text-decoration: underline;
 }
 
-//Hover data-link
-tr[data-link]{
-  cursor:pointer;
-}
-
 /*
  * Main content
  */
@@ -278,4 +273,5 @@ padding: 8px;
 line-height: 1.428571429;
 vertical-align: top;
 border-top: 1px solid #D5EF9F;
+
 }

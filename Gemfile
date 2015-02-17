@@ -3,14 +3,15 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
-gem 'bootstrap-sass', '~> 3.3.1' 
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem 'sprockets', '2.11.0'
+gem 'sprockets'
 gem 'bcrypt-ruby', '3.1.2' 
-gem 'will_paginate', '3.0.4' #allows you to limit how many items are displayed in a page
-gem 'bootstrap-will_paginate', '0.0.9' #for styling will_paginate
+gem 'will_paginate', '3.0.7' #easier pagination
+gem 'bootstrap-will_paginate', '0.0.10' #for styling will_paginate
 gem 'ransack' #simplify creation of search features
 gem 'jquery-ui-rails' #jquery UI, self-explanatory
+gem 'faker', '1.4.2' #generate multiple accounts
 
 
 

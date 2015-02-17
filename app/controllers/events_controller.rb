@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
+	helper_method :sort_column, :sort_direction
 	
 	def index
-		@events = Event.all
-
+		@events = Event.order(sort_column+" "+sort_direction).paginate(:page => params[:page], :per_page=> 10)
 	end 
 
 	def show
@@ -79,9 +79,19 @@ class EventsController < ApplicationController
     end
 
 	private
-	#params to avoid cross side scripting loopholes
+	  #params to avoid cross side scripting loopholes
   	  def event_params
   	  	params.require(:event).permit(:date,:location,boothlist:[])
+  	  end
+  	  
+  	  def sort_column
+  	  	#params[:sort] || "date"
+  	  	Event.column_names.include?(params[:sort]) ? params[:sort] : "date"
+  	  end
+  	  
+  	  def sort_direction
+  	  	#params[:direction] || "asc"
+  	  	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   	  end
 end
 
