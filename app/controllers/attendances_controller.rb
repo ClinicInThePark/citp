@@ -9,7 +9,7 @@ class AttendancesController < ApplicationController
 			@event.attendances.create(booth_id:b_id,booth_attendance:b_attendance,service:Booth.find_by(id:b_id).service)
 		end
 		flash[:success] = "Successfully added attendance"
-		redirect_to events_path
+		redirect_to @event
 	end
 
 	def show 
@@ -18,14 +18,11 @@ class AttendancesController < ApplicationController
 		respond_to do |format|
 			format.html 
 			format.csv {send_data @attendance.to_csv}
-			format.xls 
+			format.xls
 		end
 	end
-		
 	
-	def import
-		Attendance.import(params[:file])
-		render 'index', notice: "File imported"
+	def edit
 	end
-
+		
 end

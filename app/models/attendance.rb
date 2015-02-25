@@ -19,4 +19,5 @@ class Attendance < ActiveRecord::Base
 			Product.create! row.to_hash
 		end
 	end
+	
 end

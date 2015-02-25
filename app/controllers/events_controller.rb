@@ -73,9 +73,6 @@ class EventsController < ApplicationController
         flash[:success] = "Event deleted"
         @events = Event.all
         redirect_to events_path
-        
-       
-        
     end
 
 	private

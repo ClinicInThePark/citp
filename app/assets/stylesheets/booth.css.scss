@@ -25,3 +25,24 @@
 	text-align:center;
 }
 
+.boxed-group {
+	position: relative;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+
+.boxed-group-inner {
+	padding: 1px 10px;
+	background: #fff;
+	border: 1px solid #d8d8d8;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	color: #666;
+	font-size: 13px;
+}
+
+.one-fourth {
+	float:right;
+	width: 25%;
+	margin-top:-300px;
+}

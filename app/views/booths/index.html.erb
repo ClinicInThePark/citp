@@ -1,21 +1,43 @@
 <% provide(:title,"All Organizations") %>
-<h3>All Booths</h3>
 
+<div class="row">
+	<div class="col-sm-10 col-md-10">
+	<h3 style="display:inline">All Organizations</h3> 
+	<%= link_to new_booth_path, class:"btn btn-default btn-sm", id: "add_button" do %>
+	  <i class="glyphicon glyphicon-plus"></i> <b>New Organization</b>
+	<% end %>
+	
 <hr>
-	<div class="booths">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th><b>Organization</b></th>
-				</tr>
-			</thead>
-			<%@booths.each do |b|%>
-				 <tr>	
-				    <td><%=link_to b.name, b%></td>
-				 </tr>
-			<%end%>
-		</table>
-	</div>
-	<br>
-	<div class="creation"><%=link_to "Add New Organization", new_booth_path, class: "btn btn-large btn-primary"%></div>
-</hr>
+	<table class="table table-striped" style="border: 1px solid rgb(224, 219, 219); border-radius: .3em;">
+		<thead>
+			<tr>
+				<th><b>Organization</b></th>
+				<th><b>Last Updated</b></th>
+			</tr>
+		</thead>
+		<%@booths.each do |b|%>
+			 <tr>	
+			    <td style="width:20%"><%=link_to b.name, b%></td>
+			    <td style="width:20%"><%=b.updated_at%>
+				    
+			    	<%= link_to b, method: :delete, data: { confirm: "Are you sure about deleting this organization?" }, class:"event-glyph-buttons" do%>
+			 		 <i class="glyphicon glyphicon-trash"></i>
+			 		<% end %>
+				    
+				    <!--button for editing event-->
+				    <%=link_to  edit_booth_path(b), class:"event-glyph-buttons" do %>
+					     <i class="glyphicon glyphicon-pencil"></i>
+					<% end %>
+					
+					<!--button for looking at an event-->
+				    <%=link_to  booth_path(b), class: "event-glyph-buttons" do %>
+				    	 <i class="glyphicon glyphicon-search"></i>
+				    <% end %>
+				    
+				  </td>
+			 </tr>
+		<%end%>
+	</table>
+</div>
+</div>
+<%=will_paginate @booths %>

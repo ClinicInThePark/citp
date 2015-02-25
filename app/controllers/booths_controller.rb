@@ -1,6 +1,6 @@
 class BoothsController < ApplicationController
 	def index 
-		@booths = Booth.all
+		@booths = Booth.paginate(:page => params[:page], :per_page=> 10)
 	end 
 
 	def new 
@@ -10,7 +10,7 @@ class BoothsController < ApplicationController
 	def create
 		@booth = Booth.new(booth_params)
     	if @booth.save
-	        flash[:now] = "Organization added!"
+	        flash[:success] = "Organization added!"
 	       	redirect_to new_booth_path
     	else
     		render 'new'
@@ -19,7 +19,7 @@ class BoothsController < ApplicationController
 
     def show
         @booth = Booth.find(params[:id])
-        @attendance = @booth.attendances.all
+        @attendance = @booth.attendances.paginate(:page => params[:page], :per_page => 10)
     end
 
 
@@ -40,7 +40,7 @@ class BoothsController < ApplicationController
 
     def destroy
         Booth.find(params[:id]).destroy
-        flash[:now] = "Booth deleted"
+        flash[:success] = "Organization deleted"
         redirect_to booths_path
     end
 

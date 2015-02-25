@@ -1,9 +1,22 @@
 <ul class="nav nav-sidebar">
-	<li><%=link_to "Events", events_path%></li>
-	<li><%=link_to "Booths", booths_path%></li>     
+	<li class="side-event">
+	<%= link_to events_path do %>
+        <i class="glyphicon glyphicon-calendar"></i>
+        <span style="margin-left:3px">Events</span>
+    <% end %>
+    
+	</li>
+	<li class="side-booth">
+	    <%= link_to booths_path do %>
+            <i class="glyphicon glyphicon-home"></i>
+            <span style="margin-left:3px">Booths</span>
+        <% end %>
+	</li>
+	
 </ul>
 
-
+	
+	
 <!--highlights the sidebar tab the user is currently on-->
 <script type="text/javascript">
     $(function() {
