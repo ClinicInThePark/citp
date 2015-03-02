@@ -1,24 +1,56 @@
 <% provide(:title ,"Add organization") %>
 
-<div class="new-edit-form">
-<div class="form">
-	<div class="form-group">
-		<h3 class="new-edit">New Organization</h3>
-		<%= form_for(@booth) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %> 
-
-			<%=f.label :Name %>
-			<%=f.text_field :name, class:"form-control" %>
-			<br>
-			<%=f.label :Description %>
-			<%=f.text_area :description, class:"form-control" %>
-			<br>
-			<%=f.label :Service %>
-			<%=f.text_area :service, class:"form-control" %>
-			<br>
-			<%=f.submit "Add Organization", class: "btn btn-large btn-primary" %>
-
-		<% end %>
+<div class="row">
+	<div class="col-sm-6"> 
+		<section class="panel panel-default"> 
+		<header class="panel-heading font-bold">Add New Organization
+		</header> 
+		<div class="panel-body" style="margin: 10px;"> 
+			<form role="form"> 
+				<%= form_for(@booth) do |f| %>
+					<%= render 'shared/error_messages', object: f.object %> 
+		
+					<%=f.label :Name %>
+					<%=f.text_field :name, class:"form-control" %>
+					<br>
+					<%=f.label :Description %>
+					<%=f.text_area :description, :onkeyup => "DjCheckMaxlength(this);", :maxlength => 20, class:"form-control" %>
+					<br>
+					<%=f.label :Service %>
+					<%=f.text_area :service, :onkeyup => "DjCheckMaxlength(this);", :maxlength => 20,  class:"form-control" %>
+					<br>
+					<%=f.submit "Add Organization", class: "btn btn-large btn-primary" %>
+	
+				<% end %>
+			</form> 
+		</div> 
+		</section>
+	</div>
+	<div class="col-sm-3" style="margin-top:15%">
+		<div class="alert alert-warning alert-block" style="box-shadow: 0 5px 10px rgba(0,0,0,.1)"> 
+			<h4>Adding a New Organization:</h4>
+			<p>1) Input the organization's name</p>
+			<p>2) A brief 1 sentence description</p>
+			<p>3) A brief 2-3 word summary of their service</p>
+			<p>4) Press Submit</p>
+		</div>
 	</div>
 </div>
 
+
+<script language="javascript" type="text/javascript">
+function DjCheckMaxlength(oInObj)
+{
+      var iMaxLen = parseInt(oInObj.getAttribute('maxlength'));
+      var iCurLen = oInObj.value.length;
+
+      if ( oInObj.getAttribute && iCurLen > iMaxLen )
+      {
+          oInObj.value = oInObj.value.substring(0, iMaxLen);
+      }
+} //@ END OF DjCheckMaxlength()
+</script>
+
+<script>
+	$(".side-booth").addClass("active");
+</script>

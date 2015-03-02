@@ -16,12 +16,6 @@ module ApplicationHelper
 	    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
 	end
 	
-	def parse_edit_date(string)
-		date = string.to_s.split(' ')
-		#mdy = string.split('-')
-		
-		return date[0]
-	end
 	
 end
 

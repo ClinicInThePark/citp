@@ -51,37 +51,27 @@
 
 
 <!--print view for the passport, display set to none-->
-<div class="passport">
-  <div class ="front-container" style="width: 200px;
-                                      height:200px;
-                     text-align: center;
-                     margin-right: 0%;
-                     margin-top:2%;
-                     font-size:32px;">
-    Clinic in the Park
+<div class="passport" style=" margin-top:-65px; width:400px; border:1px solid;">
+  <p class="front-container" style="font-size:20px">Clinic in the Park</p>
+  
+  <div class="front-container" style="width:90px; height:90px;">
+    <div id="Image_1" class="imageSection"><img id="img_1" alt="" width="90px" height="90px" name="img_1"></div>
   </div>
-  <div class="front-container" style="width:200px; height:200px">
-    <div id="Image_1" class="imageSection"><img id="img_1" alt="" width="200px" height="200px" name="img_1"></div>
-  </div>
-  <br>
 
-  <div class="front-container">
+  <div class="front-container" style="margin-top: 20px; margin-right">
     <p>Date: <%=@event.date%></p>
     <p>Name: ________________</p>
   </div>
 
-  <div class="front-container">
-  </div>
-
-  <div class="front-container" style="margin-right: 6%;
-                    margin-top: 70%;
-                    font-size: 32px;">
+  <div class="front-container" style="margin-top: 100%; margin-left:50%;
+                                      font-size: 32px;">
     Sponsors
   </div>
+  
 </div>
 <br>
 
-<div class="innerPages">
+<div class="innerPages" style=" width:450px;">
   <%@event.boothlist.each do |booth_id|%>
     <%booth = Booth.find(booth_id)%>
     <div class ="booth-container">
@@ -175,4 +165,8 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+</script>
+
+<script>
+	$(".side-event").addClass("active");
 </script>

@@ -1,38 +1,52 @@
 <% provide(:title ,"New Event") %>
-
-<div class="new-edit-form">
-<div class="form">
-	<div class="form-group">
-		<h3 class="new-edit">New Event</h3>
-		<%= form_for(@event) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %> 
-
-			<%=f.label :date%> 
-			<%=f.date_field :date, class:"form-control" %>
-			<br>
-			<%=f.label :Location %>
-			<%=f.text_field :location, class:"form-control", placeholder:"OC Great Park" %> 
-			<br>
-			<%=f.label :Attending_Organizations%>
-
-			<div id="new-event-form">
-			<div class="checkbox"> 	
-				<label>
-				<% @booths.each do |booth|%>
-					<%=check_box_tag "booth_ids[]", booth.id%>
-					<%=f.label booth.name %>
-					<br>
-				<%end%>
-				</label>
-			</div>
-			</div>
-
-			<br>
-			Organization not found? <%=link_to "Add an organization!", new_booth_path%>
-			<br><br>
-			<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
-
-		<% end %>
+<div class="row">
+	<div class="col-sm-6"> 
+		<section class="panel panel-default"> 
+		<header class="panel-heading font-bold">Create New Event
+		</header> 
+		<div class="panel-body" style="margin: 10px;"> 
+			<%= form_for(@event) do |f| %>
+				<%=render 'shared/error_messages', object: f.object %> 
+	
+				<%=f.label :date%> 
+				<%=f.date_field :date, class:"form-control" %>
+				<br>
+				<%=f.label :Location %>
+				<%=f.text_field :location, class:"form-control", placeholder:"OC Great Park" %> 
+				<br>
+				<%=f.label :Attending_Organizations%>
+				
+				<div id="new-event-form">
+				<div class="checkbox"> 	
+					<label class="checkbox-custom">
+					<% @booths.each do |booth|%>
+						<%=check_box_tag "booth_ids[]", booth.id%>
+						<%=booth.name %>
+						<br>
+					<%end%>
+					</label>
+				</div>
+				</div>
+				<br>
+				Organization not found? <p style="display:inline; text-decoration:underline;"><%=link_to "Add an organization!", new_booth_path%></p>
+				<br><br>
+				<%=f.submit "Create Event", class: "btn btn-large btn-primary" %>
+	
+			<% end %>
+		</div> 
+		</section>
+	</div>
+	<div class="col-sm-3" style="margin-top:15%">
+		<div class="alert alert-warning alert-block" style="box-shadow: 0 5px 10px rgba(0,0,0,.1)"> 
+			<h4>Creating a New Event:</h4>
+			<p>1) Input the date in Month/Day/Year format</p>
+			<p>2) Input the Location of the event (e.g: OC Great Park)</p>
+			<p>3) Check off all organizations attending this event</p>
+			<p>4) Press Submit</p>
+		</div>
 	</div>
 </div>
-</div> 
+
+<script>
+	$(".side-event").addClass("active");
+</script>

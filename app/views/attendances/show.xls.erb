@@ -12,6 +12,7 @@
     <td><%=Event.find_by(id:event.event_id).date%></td>
     <td><%=Event.find_by(id:event.event_id).location%></td>
     <td><%= Booth.find_by(id:event.booth_id).name %></td>
+    <td><%= Booth.find_by(id:event.booth_id).service %></td>
     <td><%= event.booth_attendance %></td>
   </tr>
   <% end %>

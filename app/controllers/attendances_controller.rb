@@ -23,6 +23,9 @@ class AttendancesController < ApplicationController
 	end
 	
 	def edit
+		@booth = Booth.find(params[:id])
 	end
+	
+
 		
 end

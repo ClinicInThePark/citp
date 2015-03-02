@@ -34,8 +34,11 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		@booths = Booth.all
 		@event.boothlist = []
-			params[:booth_ids].each do |booth|
-				@event.boothlist.push(booth)
+			begin 
+				params[:booth_ids].each do |booth|
+					@event.boothlist.push(booth)
+				end
+			rescue
 			end
 		if @event.save
 			flash[:success]= "Event created!"
@@ -56,11 +59,14 @@ class EventsController < ApplicationController
         @booths = Booth.all
         @event.update(event_params)
 		@event.boothlist = []
-			params[:booth_ids].each do |booth|
-				@event.boothlist.push(booth)
+			begin
+				params[:booth_ids].each do |booth|
+					@event.boothlist.push(booth)
+				end
+			rescue
 			end
 		if @event.save
-			flash[:now]= "Event updated!"
+			flash[:success]= "Event updated!"
 			@events = Event.all
             redirect_to events_path
         else

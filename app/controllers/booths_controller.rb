@@ -1,6 +1,8 @@
 class BoothsController < ApplicationController
+    helper_method :sort_column, :sort_direction
+    
 	def index 
-		@booths = Booth.paginate(:page => params[:page], :per_page=> 10)
+		@booths = Booth.order(sort_column+" "+sort_direction).paginate(:page => params[:page], :per_page=> 10)
 	end 
 
 	def new 
@@ -13,6 +15,7 @@ class BoothsController < ApplicationController
 	        flash[:success] = "Organization added!"
 	       	redirect_to new_booth_path
     	else
+    	    flash[:danger] ="Incorrect input"
     		render 'new'
     	end
 	end
@@ -30,9 +33,9 @@ class BoothsController < ApplicationController
 	def update
         @booth = Booth.find(params[:id])
         if @booth.update_attributes(booth_params)
-            flash[:now] = "Booth update successful"
+            flash[:success] = "Booth update successful"
             @booths = Booth.all
-            render 'index'
+            redirect_to booth_path
         else
             render 'edit'
         end
@@ -48,5 +51,15 @@ class BoothsController < ApplicationController
 	private
   	  def booth_params
   	  	params.require(:booth).permit(:name,:service,:description)
+  	  end
+  	  
+  	  def sort_column
+  	  	#params[:sort] || "date"
+  	  	Booth.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  	  end
+  	  
+  	  def sort_direction
+  	  	#params[:direction] || "asc"
+  	  	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   	  end
 end

@@ -1,14 +1,14 @@
-<% provide(:title,"All Organizations") %>
+<!--events/show-->
+<% provide(:title,"Single Event") %>
 
-<!--<%=@event.boothlist.map{|booth_id| Booth.find(booth_id)}%>-->
+
 <div class="row">
 	<div class="col-sm-10 col-md-10">
-		<h3><%=@event.date%> <%=@event.location%></h3>
 		<script type="text/javascript">
 		$(function () {
 			  new Highcharts.Chart({
 			    chart: { renderTo: 'orders_chart', type:'column'},
-			    title: { text: 'Total Attendance'},
+			    title: { text: '<%=@event.date.strftime("%B %d, %Y")%>, Event Statistics'},
 		        xAxis: {categories: ['Attending Booths']},
 		        yAxis: {
 		            min: 0,
@@ -30,7 +30,12 @@
 		        },
 		        series: [
 		        	<%@event.boothlist.each do |booth_id|%>
-		        	<%booth = Booth.find(booth_id)%>
+		        	<%begin%>
+		        	<%if Booth.find(booth_id)%>
+		        		<%booth = Booth.find(booth_id)%>
+		        	<%end%>
+		        	<%rescue%>
+		        	<%end%>
 		        {
 		            name: '<%=booth.name%>',
 		            data: [<%if booth.attendances.find_by(event_id:@event.id) != nil%> 
@@ -44,72 +49,106 @@
 			  });
 			});
 		</script>
-		<div id="orders_chart" style="width:560px; height:300px;"></div>
-	
-        
+		<div id="orders_chart" style="width:560px; height:300px; margin:auto"></div>
 <br>
 
 <div class="panel panel-default">
+	<%total=0%>
+	<%total_data=0%>
+	<%highest_attendance=0%>
     <div class="panel-heading">
         Attending Organizations
 	<div class="pull-right">
-        <div class="btn-group open">
+        <div class="btn-group">
             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 Actions
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-right" role="menu">
-                <li><%=link_to "Print Passport", passport_path(@event)%></li>
+                <li><%=link_to "Preview Passport Template", passport_path(@event)%></li>
     			<li><%=link_to "Add Attendance", attendance_path(@event)%></li>
-    			<li><%=link_to "Excel", event_path(format:"xls")%></li>
+    			<li><%=link_to "Export as Excel File", event_path(format:"xls")%></li>
             </ul>
         </div>
     </div>
 </div>
         <!-- /.panel-heading -->
-<div class="panel-body">
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                   	<th><b>Organizations</b></th>
-					<th><b>Attendance</b></th>
-					<th><b>Service Provided</b></th>
-                </tr>
-            </thead>
-            <tbody>
-			<%@event.boothlist.each do |booth_id|%>
-				<%booth = Booth.find(booth_id)%>
-					 <tr>	
-					    <td><%=booth.name%></td>
-					    <td>
-					    	<%if booth.attendances.find_by(event_id:@event.id) != nil%> 
-					    		<%=booth.attendances.find_by(event_id:@event.id).booth_attendance%>
-					    	<%else%>
-					    		<%=0%>
-					    	<%end%>
-					    </td>
-					    <td><%=booth.description%> 
-					    	<%= link_to booth, method: :delete, data: { confirm: "Are you sure about removing this booth?" }, class:"event-glyph-buttons" do%>
-					 		 	<i class="glyphicon glyphicon-trash"></i>
-					 		<% end %>
-						    
-						    <!--button for editing event-->
-						    <%=link_to  edit_booth_path(booth), class:"event-glyph-buttons" do %>
-							     <i class="glyphicon glyphicon-pencil"></i>
-							<% end %>
-					    </td>
-					 </tr>
-				<%end%>
-			</tbody>
-        </table>
-    </div>
-    <!-- /.table-responsive -->
-</div>
-<!-- /.panel-body -->
-</div>
-	
+        
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                       	<th><b>Organizations</b></th>
+    					<th><b>Attendance</b></th>
+    					<th><b>Service Provided</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+    			<%@event.boothlist.each do |booth_id|%>
+    				<%booth = Booth.find(booth_id)%>
+    					<%total_data+=1%>
+    					 <tr>	
+    					    <td><%=booth.name%></td>
+    					    <td>
+    					    	<%if booth.attendances.find_by(event_id:@event.id) != nil%> 
+    					    		<%=booth.attendances.find_by(event_id:@event.id).booth_attendance%>
+    					    		<%total+=booth.attendances.find_by(event_id:@event.id).booth_attendance%>
+    					    		<%if booth.attendances.find_by(event_id:@event.id).booth_attendance > highest_attendance%>
+    					    			<%highest_attendance = booth.attendances.find_by(event_id:@event.id).booth_attendance%>
+    					    		<%end%>
+    					    	<%else%>
+    					    		<%=0%>
+    					    	<%end%>
+    					    </td>
+    					    <td><%=booth.service%> 
+    					    
+    						    <!--button for editing event-->
+    						    <%=link_to  edit_booth_path(booth), class:"event-glyph-buttons" do %>
+    							     <i class="glyphicon glyphicon-pencil"></i>
+    							<% end %>
+    							
+    							<!--button for looking at an event-->
+							    <%=link_to  booth_path(booth), class: "event-glyph-buttons" do %>
+							    	 <i class="glyphicon glyphicon-search"></i>
+							    <% end %>
+							    
+    					    </td>
+    					 </tr>
+    				<%end%>
+    			</tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div><!-- /.panel-body -->
+    <footer class="panel-footer bg-white no-padder" style="padding:0px;"> 
+	    <div class="row text-center no-gutter"> 
+		    <div class="col-xs-3 b-r b-light"> 
+			    <span class="h4 font-bold m-t block"><%=total%></span> 
+			    <small class="text-muted m-b block">Total Event Visitors</small>
+			</div> 
+			<div class="col-xs-3 b-r b-light"> 
+				<span class="h4 font-bold m-t block"><%=total_data%></span> 
+				<small class="text-muted m-b block">Participating Organizations</small> 
+			</div>
+			<div class="col-xs-3 b-r b-light"> 
+				<span class="h4 font-bold m-t block"><%=highest_attendance%></span> 
+				<small class="text-muted m-b block">Highest Attendance</small> 
+			</div> 
+			<div class="col-xs-3"> 
+				<span class="h4 font-bold m-t block"><%=total_data%></span> 
+				<small class="text-muted m-b block">Types of Services Provided</small>  
+			</div> 
+		</div> 
+	</footer>
+</div><!--panel panel-default-->
+
 </div><!--col-sm-10 col-md-10-->    
 </div><!--row-->
 			
 </hr>
+
+
+<script>
+	$(".side-event").addClass("active");
+</script>

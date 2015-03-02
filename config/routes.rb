@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   match '/signout',      to: 'sessions#destroy', 		    via: 'delete'
   match '/signup',	     to: 'users#new',				        via: 'get'
   match '/home',         to: 'sessions#index',          via: 'get'
-  match '/booth_attendance/:id',   to:'events#show', as: 'booth_attendance', via:'post'
 
 
 end

@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-	has_many :attendances
-	has_many :booths, :through => :attendances
+	has_many :attendances, dependent: :destroy
+	has_many :booths, :through => :attendances, dependent: :destroy
 
 	#used to allow storage of arrays in db
 	serialize :boothlist

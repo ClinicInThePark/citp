@@ -4,7 +4,7 @@
 	}
 	.passport{
 		display:block;
-		width: 800px;
+		width: 400px;
 		height: 1100px;
 	}
 	form{
@@ -28,8 +28,7 @@
 		height: 100px;
 		transform: rotate(90deg);
 		float: right;
-		margin-top:3%;
-		margin-right:5%;
+		
 	}
 	
 	.innerPages{

@@ -30,7 +30,7 @@ hr {
 margin-top: 20px;
 margin-bottom: 20px;
 border: 0;
-border-top: 1px solid #A7C763;
+border-top: 1px solid #D9DAD7;
 }
 
 // No color change when hover over text logo.
@@ -328,3 +328,69 @@ text-decoration: none;
 
 .table tr td a.event-glyph-buttons { visibility:hidden;}
 .table tr:hover td a.event-glyph-buttons { visibility:visible;}
+
+.table {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom:0px;
+}
+
+
+//panel style
+.panel-body{
+  padding:0px;
+}
+
+//taken from http://flatfull.com/themes/note/index.html
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.no-gutter [class*="col"] {
+  padding: 0;
+}
+.b-light {
+  border-color: #e4e4e4;
+}
+.b-r {
+  border-right: 1px solid #cfcfcf;
+}
+.col-xs-3 {
+  width: 25%;
+}
+
+.m-t {
+  margin-top: 15px;
+}
+.font-bold {
+  font-weight: 700;
+}
+.block {
+  display: block;
+}
+
+.bg-white .text-muted {
+  color: #979797 !important;
+}
+.m-b {
+margin-bottom: 15px;
+}
+.block {
+display: block;
+}
+
+footer {
+border-color: #e8e8e8;
+}
+.no-padder {
+padding: 0 !important;
+}
+.bg-white {
+background-color: #fff;
+color: #717171;
+}
+.panel-footer {
+border-radius: 0 0 2px 2px;
+}
