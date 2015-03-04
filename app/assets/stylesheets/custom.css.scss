@@ -2,7 +2,9 @@
 @import "bootstrap";	
 
 /* Header */
-
+.container{
+  width:95%;
+}
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
@@ -217,6 +219,7 @@ text-decoration: underline;
   border-top-right-radius: 0;
 }
 
+
 /* new and edit forms */
 
 .new-edit{
@@ -393,4 +396,79 @@ color: #717171;
 }
 .panel-footer {
 border-radius: 0 0 2px 2px;
+}
+
+.panel-default > .panel-heading {
+color: #333333;
+background-color: rgb(213, 239, 159);
+border-color: #dddddd;
+}
+
+.radio label, .checkbox label {
+min-height: 20px;
+padding-left: 20px;
+margin-bottom: 0;
+font-weight: normal;
+cursor: pointer;
+margin-left: 10px;   // pushed radio buttons slightly to right
+}
+
+// "Admin" On Hover
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+background-color: #FCFCFC;
+color: #808000;
+}
+
+.dropdown-menu {
+position: absolute;
+top: 100%;
+left: 0;
+z-index: 1000;
+display: none;
+float: left;
+min-width: 160px;
+padding: 5px 0;
+margin: 2px 0 0;
+list-style: none;
+font-size: 14px;
+text-align: left;
+background-color: rgb(252, 252, 252);   // changed to default header color
+border: 1px solid #cccccc;
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 4px;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+background-clip: padding-box;
+}
+
+.dropdown-menu > li > a {
+display: block;
+padding: 3px 20px;
+clear: both;
+font-weight: normal;
+line-height: 1.428571429;
+color: #808000;
+white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+text-decoration: none;
+color: #808000;
+background-color: rgb(231, 243, 205);
+}
+
+// Separate for Home from "Logo"
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+color: olive;
+background-color: #FCFCFC;
+}
+
+// Profile
+.panel-info > .panel-heading {
+color: #909463;
+background-color: #D5EF9F;
+border-color: #CCCCCC;
+}
+
+.panel-info {
+border-color: #CCCCCC;
 }

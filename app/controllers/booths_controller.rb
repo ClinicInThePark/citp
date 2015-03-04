@@ -1,8 +1,10 @@
 class BoothsController < ApplicationController
     helper_method :sort_column, :sort_direction
     
-	def index 
-		@booths = Booth.order(sort_column+" "+sort_direction).paginate(:page => params[:page], :per_page=> 10)
+	def index
+	    if !signed_in_user
+	    	@booths = Booth.order(sort_column+" "+sort_direction).paginate(:page => params[:page], :per_page=> 10)
+	    end
 	end 
 
 	def new 
@@ -21,8 +23,10 @@ class BoothsController < ApplicationController
 	end
 
     def show
-        @booth = Booth.find(params[:id])
-        @attendance = @booth.attendances.paginate(:page => params[:page], :per_page => 10)
+         if !signed_in_user
+            @booth = Booth.find(params[:id])
+            @attendance = @booth.attendances.paginate(:page => params[:page], :per_page => 10)
+        end
     end
 
 

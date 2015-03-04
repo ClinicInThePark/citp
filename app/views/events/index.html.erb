@@ -1,54 +1,55 @@
 <!--events/index-->
 <% provide(:title,"All Events") %>
 
-<div class="row">
-	<div class="col-sm-10 col-md-10">
-	<i class="glyphicon glyphicon-calendar">
-		<h3 style="display:inline; padding-left:0px;">Events</h3> 
-	</i>
-	<%= link_to new_event_path, class:"btn btn-default btn-sm", id: "add_button" do %>
-	  <i class="glyphicon glyphicon-plus"></i> <b>New Event</b>
-	<% end %>
-	
-	<hr>
-		<table class="table table-striped table-hover" style="border: 1px solid rgb(224, 219, 219); border-radius: .3em;">
-			<thead>
-				<tr>
-					<th><%=sortable "date"%></th>
-					<th><%=sortable "location"%></th>
-					<th>Last Modified</th>
-				</tr>
-			</thead>
-			<tbody>
-			<%@events.each do |event|%>
-				 <tr>	<!--<tr data-link="<%=event_path(event)%>">-->	
-				 
-				    <td style="width:20%"><%=event.date.strftime("%B %d, %Y")%></td>
-				    <td style="width:20%"><%=event.location%></td>
-				    <td style="width:20%"><%=event.updated_at.strftime("%B %d, %Y")%>
-				    
-			    	<%= link_to event, method: :delete, data: { confirm: "Are you sure about deleting this event?" }, class:"event-glyph-buttons" do%>
-			 		 <i class="glyphicon glyphicon-trash"></i>
-			 		<% end %>
-				    
-				    <!--button for editing event-->
-				    <%=link_to  edit_event_path(event), class:"event-glyph-buttons" do %>
-					     <i class="glyphicon glyphicon-pencil"></i>
-					<% end %>
-					
-					<!--button for looking at an event-->
-				    <%=link_to  event_path(event), class: "event-glyph-buttons" do %>
-				    	 <i class="glyphicon glyphicon-search"></i>
-				    <% end %>
-				    
-				    </td>
-				 </tr>
-			<%end%>
-			</tbody>				
-		</table>
+	<div class="row">
+		<div class="col-sm-10 col-md-10">
+		<i class="glyphicon glyphicon-calendar">
+			<h3 style="display:inline; padding-left:0px;">Events</h3> 
+		</i>
+		<%= link_to new_event_path, class:"btn btn-default btn-sm", id: "add_button" do %>
+		  <i class="glyphicon glyphicon-plus"></i> <b>New Event</b>
+		<% end %>
+		
+		<hr>
+			<table class="table table-striped table-hover" style="border: 1px solid rgb(224, 219, 219); border-radius: .3em;">
+				<thead>
+					<tr>
+						<th><%=sortable "date"%></th>
+						<th><%=sortable "location"%></th>
+						<th>Last Modified</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%@events.each do |event|%>
+					 <tr>	<!--<tr data-link="<%=event_path(event)%>">-->	
+					 
+					    <td style="width:20%"><%=event.date.strftime("%B %d, %Y")%></td>
+					    <td style="width:20%"><%=event.location%></td>
+					    <td style="width:20%"><%=event.updated_at.strftime("%B %d, %Y")%>
+					    
+				    	<%= link_to event, method: :delete, data: { confirm: "Are you sure about deleting this event?" }, class:"event-glyph-buttons" do%>
+				 		 <i class="glyphicon glyphicon-trash"></i>
+				 		<% end %>
+					    
+					    <!--button for editing event-->
+					    <%=link_to  edit_event_path(event), class:"event-glyph-buttons" do %>
+						     <i class="glyphicon glyphicon-pencil"></i>
+						<% end %>
+						
+						<!--button for looking at an event-->
+					    <%=link_to  event_path(event), class: "event-glyph-buttons" do %>
+					    	 <i class="glyphicon glyphicon-search"></i>
+					    <% end %>
+					    
+					    </td>
+					 </tr>
+				<%end%>
+				</tbody>				
+			</table>
+		</div>
 	</div>
-</div>
-<%=will_paginate @events%>
+	<%=will_paginate @events%>
+
 
 
 <!--data-link used for routing table row clicks to the correct page-->
@@ -57,6 +58,9 @@
     $("tr[data-link]").click(function() {
       window.location = this.dataset.link
     });
+    
+	 $(".side-event").addClass("active");
+
     
     $("tr[data-link").css("cursor","pointer");
 });

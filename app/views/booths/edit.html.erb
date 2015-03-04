@@ -1,27 +1,44 @@
 <% provide(:title ,"Edit Organization") %>
 
-<div class="new-edit-form">
-<div class="form">
-	<div class="form-group">
-		<h3 class="new-edit">Organization: <%=@booth.name%></h3>
-		<%= form_for(@booth) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %> 
+<div class="row">
+	<!--edit form-->
+	<div class="col-sm-6"> 
+		<section class="panel panel-default"> 
+		<header class="panel-heading font-bold">Edit Organization: <%=@booth.name%>
+		</header> 
+		<div class="panel-body" style="margin: 10px;"> 
+			<%= form_for(@booth) do |f| %>
+				<%= render 'shared/error_messages', object: f.object %> 
+	
+				<%=f.label :Name %>
+				<%=f.text_field :name, class:"form-control" %>
+				<br>
+				<%=f.label :Description %>
+				<%=f.text_area :description, :onkeyup => "DjCheckMaxlength(this);", :maxlength => 20, class:"form-control" %>
+				<br>
+				<%=f.label :Service %>
+				<%=f.text_area :service, :onkeyup => "DjCheckMaxlength(this);", :maxlength => 20,  class:"form-control" %>
+				<br>
+				<%=f.submit "Submit", class: "btn btn-large btn-primary" %>
 
-			<%=f.label :Name %>
-			<%=f.text_field :name, class:"form-control" %>
-			<br>
-			<%=f.label :Description %>
-			<%=f.text_area :description, class:"form-control" %>
-			<br>
-			<%=f.label :Service %>
-			<%=f.text_area :service, class:"form-control" %>
-			<br>
-			<%=f.submit "Submit", class: "btn btn-large btn-primary" %>
-
-		<% end %>
+			<% end %>
+		</div> 
+		</section>
 	</div>
-</div>
-
+	<!--end edit form-->
+	
+	<!-- edit sticky note-->
+	<div class="col-sm-3" style="margin-top:15%">
+		<div class="alert alert-warning alert-block" style="box-shadow: 0 5px 10px rgba(0,0,0,.1)"> 
+			<h4>Editting an Organization:</h4>
+			<p>1) Edit any of the displayed information</p>
+			<p>2) Press Submit</p>
+			<p>*Organization names are caped to 50 character length</p>
+		</div>
+	</div>
+	<!-- end edit sticky note-->
+	
+</div><!--end row-->
 
 <script>
 	$(".side-booth").addClass("active");

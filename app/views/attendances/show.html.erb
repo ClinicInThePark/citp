@@ -1,19 +1,27 @@
 <% provide(:title,"Add Attendance") %>
-<h2>Input event Attendance </h2>
 
-<%=form_tag(attendances_path(@event), method:"post") do |f|%>
-	 <div class="control-group">
-	 	<div class="controls">
-		<%@event.boothlist.each do |booth|%>
-			<%booth = Booth.find(booth)%>
-			<%id = booth.id.to_s%>
-			<%=booth.name%> <%=text_field_tag "booth_ids["+id+"]"%><br>
-		<%end%>
+
+
+	<div class="row">
+		<!--edit form-->
+		<div class="col-sm-6"> 
+			<section class="panel panel-default"> 
+				<header class="panel-heading font-bold">Input Event Attendance</header> 
+			<div class="panel-body" style="margin: 10px;"> 
+				<%=form_tag(attendances_path(@event), method:"post") do |f|%>
+					<%@event.boothlist.each do |booth|%>
+						<%booth = Booth.find(booth)%>
+						<%id = booth.id.to_s%>
+						<p><span style="float:left;"><%=booth.name%>:</span> <%=text_field_tag "booth_ids["+id+"]"%></p>
+					<%end%>
+					<%=submit_tag ("Submit"), class: "btn btn-large btn-primary" %>
+				<% end %>
+			</div> 
+			</section>
 		</div>
-		<%=submit_tag ("Submit"), class: "btn btn-large btn-primary" %>
-	<%end%>
-</div>
+	</div>
+	
+	<script>
+		$(".side-event").addClass("active");
+	</script>
 
-<script>
-	$(".side-event").addClass("active");
-</script>

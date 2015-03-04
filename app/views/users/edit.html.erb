@@ -1,20 +1,27 @@
 <% provide(:title ,"Edit user") %>
-<h1> Update your profile </h1>
 
 <div class="row">
-	<div class="span6 offset3" style="margin-left:100px;">
-		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %> 
-			<%=f.label :name%>
-			<%=f.text_field :name%>
-			<%=f.label :email %>
-			<%=f.text_field :email %>
-
-			<%=f.label :password %>
-			<%=f.password_field :password %>
-
-			<%=f.submit "Save Changes", class: "btn btn-large btn-primary" %>
-
-		<% end %>
+	<!--edit form-->
+	<div class="col-sm-6"> 
+		<section class="panel panel-default"> 
+			<header class="panel-heading font-bold">Edit Account</header> 
+		<div class="panel-body" style="margin: 10px;"> 
+				<%= form_for(@user) do |f| %>
+					<%= render 'shared/error_messages', object: f.object %> 
+					<%=f.label :name%>
+					<%=f.text_field :name, class:"form-control"%>
+					<br>
+					<%=f.label :email %>
+					<%=f.text_field :email, class:"form-control" %>
+					<br>
+					<%=f.label :password %>
+					<%=f.password_field :password, class:"form-control" %>
+					<br>
+					<%=f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+		
+				<% end %>
+		</div> 
+		</section>
 	</div>
 </div>
+

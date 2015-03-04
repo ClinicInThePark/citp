@@ -51,27 +51,26 @@
 
 
 <!--print view for the passport, display set to none-->
-<div class="passport" style=" margin-top:-65px; width:400px; border:1px solid;">
-  <p class="front-container" style="font-size:20px">Clinic in the Park</p>
-  
-  <div class="front-container" style="width:90px; height:90px;">
-    <div id="Image_1" class="imageSection"><img id="img_1" alt="" width="90px" height="90px" name="img_1"></div>
-  </div>
+<div class="passport" style=" margin-top:-65px; width:400px;">
+  <p class="front-container" style="font-size:20px;margin-top:90px;">Clinic in the Park</p>
+<div class="front-container" style="width:90px; height:90px; margin-right:-70px; margin-top:70px;">
+  <div id="Image_1" class="imageSection"><img id="img_1" alt="" width="90px" height="90px" name="img_1"></div>
+</div>
 
-  <div class="front-container" style="margin-top: 20px; margin-right">
+  <div class="front-container" style="margin-top: 70px; margin-right:30px;">
     <p>Date: <%=@event.date%></p>
     <p>Name: ________________</p>
   </div>
 
-  <div class="front-container" style="margin-top: 100%; margin-left:50%;
-                                      font-size: 32px;">
+  <div class="front-container" style="margin-top: 120%; margin-left:40%;
+                                      font-size: 20px;">
     Sponsors
   </div>
   
 </div>
 <br>
 
-<div class="innerPages" style=" width:450px;">
+<div class="innerPages" style=" width:425px;">
   <%@event.boothlist.each do |booth_id|%>
     <%booth = Booth.find(booth_id)%>
     <div class ="booth-container">

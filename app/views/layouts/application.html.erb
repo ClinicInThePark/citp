@@ -43,7 +43,7 @@
           <!-- sign in -->
           <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
               <% flash.each do |key , value| %>
-                  <div class="alert alert-<%= key %>"><%= value %></div>
+                  <div class="alert alert-<%= key %> col-sm-10 col-md-10"><%= value %></div>
                   
               <% end %>
               <%= yield %>

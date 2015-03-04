@@ -1,10 +1,13 @@
 <% provide(:title ,"Edit Event") %>
 
-<div class="new-edit-form">
-<div class="form">
-	<div class="form-group">
-		<h3 class="new-edit">Edit Event</h3>
-		<%= form_for(@event) do |f| %>
+<div class="row">
+	<!--edit form-->
+	<div class="col-sm-6"> 
+		<section class="panel panel-default"> 
+		<header class="panel-heading font-bold">Edit Event: <%=@event.date.strftime("%B %d, %Y")%>
+		</header> 
+		<div class="panel-body" style="margin: 10px;"> 
+			<%= form_for(@event) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %> 
 
 			<%=f.label :date%> 
@@ -33,10 +36,11 @@
 			<%=f.submit "Edit Event", class: "btn btn-large btn-primary" %>
 
 		<% end %>
+		</div> 
+		</section>
 	</div>
 </div>
-</div> 
-	
+
 <script>
 	$(".side-event").addClass("active");
 </script>
