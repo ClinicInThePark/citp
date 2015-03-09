@@ -18,13 +18,15 @@
 				
 				<div id="new-event-form">
 				<div class="checkbox"> 	
-					<label class="checkbox-custom">
+					
 					<% @booths.each do |booth|%>
+						<label class="checkbox-custom">
 						<%=check_box_tag "booth_ids[]", booth.id%>
 						<%=booth.name %>
+						</label>
 						<br>
 					<%end%>
-					</label>
+					
 				</div>
 				</div>
 				<br>

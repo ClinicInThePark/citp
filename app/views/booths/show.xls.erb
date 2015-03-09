@@ -1,0 +1,19 @@
+<table border="1">
+  <tr>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Booth</th>
+    <th>Attendance</th>
+    <th>Service Provided</th>
+  </tr>
+  <% @attendance.each do |event| %>
+  <tr>
+    <td><%=Event.find_by(id:event.event_id).date%></td>
+    <td><%=Event.find_by(id:event.event_id).location%></td>
+    <td><%=Booth.find_by(id:event.booth_id).name %></td>
+    <td><%= event.booth_attendance %></td>
+    <td><%=Booth.find_by(id:event.booth_id).service%></td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>

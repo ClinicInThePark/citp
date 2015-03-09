@@ -26,6 +26,12 @@ class BoothsController < ApplicationController
          if !signed_in_user
             @booth = Booth.find(params[:id])
             @attendance = @booth.attendances.paginate(:page => params[:page], :per_page => 10)
+            respond_to do |format|
+				format.html
+				format.js
+				format.csv {send_data @attendance.to_csv}
+				format.xls
+			end
         end
     end
 

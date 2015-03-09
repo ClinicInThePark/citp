@@ -24,8 +24,8 @@
 	}
 	.front-container{
 		display:block;
-		width: 160px;
-		height: 100px;
+		width: 180px;
+		height: 140px;
 		transform: rotate(90deg);
 		float: right;
 		
@@ -52,12 +52,12 @@
 	}
 
 	.booth-container{
-		width: 150px;
-		height: 100px;
-		padding-left: 30px;
+		width: 80px;
+		height: 80px;
+		padding-left: 10px;
 		transform: rotate(90deg);
 		float: right;
-		margin-bottom: 50px;
+		margin-bottom: 30px;
 	}
 
 	.slidebox{
