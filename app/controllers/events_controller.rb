@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(event_params)
 		@booths = Booth.all
-		@event.boothlist = Array.new
+		#@event.boothlist = Array.new
 			begin 
 				params[:booth_ids].each do |booth|
 					@event.boothlist.push(booth)
@@ -62,7 +62,7 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
         @booths = Booth.all
         @event.update(event_params)
-		@event.boothlist = Array.new
+		#@event.boothlist = Array.new
 			begin
 				params[:booth_ids].each do |booth|
 					@event.boothlist.push(booth)

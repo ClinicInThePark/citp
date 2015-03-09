@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 	has_many :booths, :through => :attendances, dependent: :destroy
 
 	#used to allow storage of arrays in db
-	serialize :boothlist
+	#serialize :boothlist
 
 	validates :date, presence: true
 	validates :location, presence: true
