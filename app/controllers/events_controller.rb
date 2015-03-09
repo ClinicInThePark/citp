@@ -88,7 +88,7 @@ class EventsController < ApplicationController
 	private
 	  #params to avoid cross side scripting loopholes
   	  def event_params
-  	  	params.require(:event).permit(:date,:location,boothlist:[])
+  	  	params.require(:event).permit(:date,:location,:boothlist)
   	  end
   	  
   	  def sort_column
