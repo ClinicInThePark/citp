@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+User.create(name:"example",email:"example@example.com",password:"foobar",password_confirmation:"foobar")
+Booth.create(name:"Healthy Smiles",service:"fluoride cleaning",description:"dental")

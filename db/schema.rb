@@ -31,33 +31,20 @@ ActiveRecord::Schema.define(version: 20150128144457) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "visitor_count", default: 0
   end
 
   create_table "events", force: true do |t|
     t.date     "date"
     t.string   "location"
-    t.string   "boothlist"
+    t.text     "boothlist",  default: "--- []\n"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "total_count", default: 0
   end
 
   create_table "passports", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "relationships", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "booth_id"
-    t.integer  "attendance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "relationships", ["booth_id"], name: "index_relationships_on_booth_id"
-  add_index "relationships", ["event_id"], name: "index_relationships_on_event_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
