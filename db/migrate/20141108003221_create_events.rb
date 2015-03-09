@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
     	t.date :date
     	t.string :location
-    	t.string :boothlist
+    	t.text :boothlist
     	
     	t.timestamps
     end
