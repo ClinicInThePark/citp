@@ -34,49 +34,6 @@ class EventsController < ApplicationController
 		
 	end 
 
-	def create
-		@event = Event.new(event_params)
-		@booths = Booth.all
-		#@event.boothlist = Array.new
-			begin 
-				params[:booth_ids].each do |booth|
-					@event.boothlist.push(booth)
-				end
-			rescue
-			end
-		if @event.save
-			flash[:success]= "Event created!"
-			@events = Event.all
-			redirect_to events_path	
-		else
-			render 'new'
-		end
-	end 	
-
-	def edit
-		@event = Event.find(params[:id])
-		@booths = Booth.all
-	end
-
-	def update
-		@event = Event.find(params[:id])
-        @booths = Booth.all
-        @event.update(event_params)
-		#@event.boothlist = Array.new
-			begin
-				params[:booth_ids].each do |booth|
-					@event.boothlist.push(booth)
-				end
-			rescue
-			end
-		if @event.save
-			flash[:success]= "Event updated!"
-			@events = Event.all
-            redirect_to events_path
-        else
-            render 'edit'
-        end
-    end	
 	
 	def destroy
         Event.find(params[:id]).destroy
