@@ -14,8 +14,8 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";	
+/*@import "bootstrap-sprockets";
+@import "bootstrap";	*/
 
 .table-striped th .current{
   padding-right: 14px;
