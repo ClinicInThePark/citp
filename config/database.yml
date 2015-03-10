@@ -23,6 +23,5 @@ test:
 production:
   adapter: postgresql
   database: citp_production
-  username: 
-  password: 
-  timeout:5000
+  pool: 5
+  timeout: 5000
