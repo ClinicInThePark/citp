@@ -14,11 +14,11 @@ gem 'jquery-ui-rails' #jquery UI, self-explanatory
 gem 'faker', '1.4.2' #generate multiple accounts
 
 
-
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-	gem 'sqlite3', '1.3.8'
+	gem 'pg', '0.15.1'
 	gem 'rspec-rails','2.13.1'
+	gem 'thin'
 end
 
 group :test do
@@ -26,6 +26,12 @@ group :test do
 	gem 'capybara', '2.1.0'
 	gem 'factory_girl_rails','4.2.0'
 end 
+
+group :production do
+	gem 'pg', '0.15.1'
+	gem 'rails_12factor', '0.0.2'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,12 +50,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 group :doc do 
 	gem 'sdoc', '0.3.20', require: false
-end
-
-group :production do
-	gem 'thin'
-	gem 'pg', '0.15.1'
-	gem 'rails_12factor', '0.0.2'
 end
 
 # Use ActiveModel has_secure_password
