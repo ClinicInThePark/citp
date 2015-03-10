@@ -1,11 +1,13 @@
 <!--sessions/new-->
 <% provide(:title,"Sign in") %>
 
+
 <div class="form-signin">
-	<img alt="Orange" src="/assets/orange.png" style="margin-left: auto; margin-right: auto; display: block;">
-	<h1 class="form-signin-heading">Clinic in the Park </h1>
+	<%=image_tag "orange.png", :style =>"margin-left: auto; margin-right: auto; display: block;"%>
+	
 	<%=form_for(:session,url: sessions_path) do |f| %>
 		<%= f.label :email, class:"sr-only" %>
+		<h1 class="form-signin-heading">Clinic in the Park </h1>
 		<%= f.text_field :email, class: "form-control", placeholder: "Email address" %>
 
 		<%= f.label :password,  class:"sr-only" %>
