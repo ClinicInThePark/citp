@@ -1,9 +1,9 @@
 <!--sessions/new-->
 <% provide(:title,"Sign in") %>
-<div style="margin-left: 39%"><%=image_tag "orange.png" %></div>
 
-<h1 class="form-signin-heading" style="padding-left: 10%; margin-left: 18%;">Clinic in the Park</h1>
 <div class="form-signin">
+	<img alt="Orange" src="/assets/orange.png" style="margin-left: auto; margin-right: auto; display: block;">
+	<h1 class="form-signin-heading">Clinic in the Park </h1>
 	<%=form_for(:session,url: sessions_path) do |f| %>
 		<%= f.label :email, class:"sr-only" %>
 		<%= f.text_field :email, class: "form-control", placeholder: "Email address" %>
