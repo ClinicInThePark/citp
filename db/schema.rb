@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150128144457) do
   create_table "events", force: true do |t|
     t.date     "date"
     t.string   "location"
-    t.text     "boothlist",  default: "--- []\n"
+    t.text     "boothlist",  default: "--- {}\n"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
