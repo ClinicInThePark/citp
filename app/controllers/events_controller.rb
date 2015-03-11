@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		@booths = Booth.all
 		params[:booth_ids].each do |booth|
-			@event.boothlist << booth
+			@event.boothlist << ("{" + booth + "}")
 		end
 			
 		if @event.save!
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
         @event.update(event_params)
         
         params[:booth_ids].each do |booth|
-			@event.boothlist << booth
+			@event.boothlist << ("{" + booth + "}")
 		end
 		
 		if @event.save!
