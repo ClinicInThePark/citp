@@ -37,9 +37,11 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(event_params)
 		@booths = Booth.all
-		params[:booth_ids].each do |booth|
-			@event.boothlist.push booth 
-		end
+		@event.save
+		
+		#params[:booth_ids].each do |booth|
+		#	@event.boothlist.push booth 
+		#end
 			
 		if @event.save!
 			flash[:success]= "Event created!"
