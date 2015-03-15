@@ -15,5 +15,7 @@ class Booth < ActiveRecord::Base
 		end
 	end
 	
+	
+	
 end
 

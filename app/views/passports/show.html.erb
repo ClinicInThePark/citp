@@ -3,25 +3,30 @@
 <!-- layout for the print view-->
 
 <!--uploading an image to the title-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
-  <form>
-    <input id="file" type="file" name="files[]" onchange="readURL(this);">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <form class="upload">
+  <h4>Front Panel</h4>
+    <input id="file" type="file" name="files[]" onchange="readFrontURL(this);">
+ </form>
+  
+
+  <form class="upload">
+      <h4>Back Panel</h4>
+    <input id="file" type="file" name="stuff[]" onchange="readBackURL(this);">
   </form>
 
-
 <a href="javascript:window.print()">Print Passport</a>
+
 <!--uploading an image to the title-->
 
 <!-- display of the image slider -->
-<div class="slidebox">
+<!--<div class="slidebox">
   <ul id="slider">
     <li><h3>Passport to Prizes</h3></p>
-      <div id="Image_1" class="imageSection" style="margin:auto;margin-top: 20px;margin-bottom: 20px;"><img id="img_1" alt="" width="70px" height="70px" name="img_1"></div>
-    	  <p>Date: <%=@event.date.strftime("%B %d, %Y")%></p> Zipcode ______
-        <br>
-        <p>Ages of Children_______</p>
-        <br>
-        <p>Have you visited before? Yes   No</p>
+      <div id="Image_1" class="imageSection" style="margin:auto;margin-top: 20px;margin-bottom: 20px;">
+        <img id="img_1" alt="" width="240px" height="240px" name="img_1">
+        <p>Date: <%=@event.date.strftime("%B %d, %Y")%></p>
+      </div>
     </li>
     <li>
 		<%@event.boothlist.each do |booth_id|%>
@@ -51,38 +56,119 @@
 
   <button id="prev">Prev</button>
   <button id="next">Next</button>
+</div>-->
+
+<!-- end display of the image slider -->
+<div class="page">
+		<!-- Passport #1 -->
+		<div class="back">
+			<div id="Image_2" class="back-image">
+        <img id="img_2" alt="" width="350px" height="457.5px" name="img_2">
+      </div>		
+		</div>
+		
+		<div class="front">
+			<div id="Image_1" class="front-image">
+        <img id="img_1" alt="" width="350px" height="457.5px" name="img_1">
+        <h5 id="date"><%=@event.date.strftime("%B %d, %Y")%></h5>
+      </div>	
+		</div>
+    <!--end passport#1-->
+    
+		<!-- Passport #2 -->
+		<div class="back">
+			<div id="Image_2" class="back-image">
+        <img id="img_2" alt="" width="350px" height="457.5px" name="img_2">
+      </div>
+		</div>
+		
+		<div class="front">
+				<div id="Image_1" class="front-image">
+          <img id="img_1" alt="" width="350px" height="457.5px" name="img_1">
+          <h5 id="date2"><%=@event.date.strftime("%B %d, %Y")%></h5>
+        </div>		
+		</div>
+		
 </div>
 
-<!-- display of the image slider -->
+<br>
+<br>
+
+<div class="page2" style="border:1px solid #B8B8B8;">
+	  <!--inner page#1-->
+	  <div class="inside-page">
+	     <%@event.boothlist.each do |booth_id|%>
+        <%booth = Booth.find(booth_id)%>
+        <div class ="booth-container">
+          <div class="sticker-field">
+             <p style="text-align:center;font-size:12px"><%=booth.name%> </p>
+          </div>
+        </div>
+      <%end%>
+	  </div>
+	  
+	  <!--inner page#2 -->
+	  <div class="inside-page">
+	     <%@event.boothlist.each do |booth_id|%>
+        <%booth = Booth.find(booth_id)%>
+        <div class ="booth-container">
+          <div class="sticker-field">
+             <p style="text-align:center;font-size:12px"><%=booth.name%> </p>
+          </div>
+        </div>
+      <%end%>
+	  </div>
+		  
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--print view for the passport, display set to none-->
-<div class="passport" style=" margin-top:-65px; width:400px;">
-  <p class="front-container" style="font-size:20px;margin-top:90px;">Passport to Prizes</p>
-<div class="front-container" style="width:100px; height:10px; margin-right:-120px; margin-top:110px;">
-  <div id="Image_1" class="imageSection"><img id="img_1" name="img_1"></div>
-</div>
-
-  <div class="front-container" style="margin-top: 70px; margin-right:30px;">
-    <p>Date: <%=@event.date.strftime("%B %d, %Y")%></p> Zipcode _____
-    <br>
-    <p>Ages of Children ______</p>
-    <br>
-    <p>Have you visited before? Yes   No</p>
+<!-- <div class="passport" style="margin-top:-65px; border:1px solid;float:right;">
+    <div class="front-container" style="font-size: 12px;;margin-right: -10px;margin-top: 28px;">
+    </div>
+    
+    <div class="front-container" style="border: 1px solid;border: 1px solid;margin-top: 55px;margin-right: -30px;">
+      <p>Passport to Prizes</p>
+        <div id="Image_1" class="imageSection"><img id="img_1" name="img_1">
+          picture
+        </div> 
+        front-container
+    </div>
+    
   </div>
-
-  <div class="front-container" style="margin-top: 100%; margin-left:40%;
-                                      font-size: 12px;">
-    <p>The information you receive from Clinic in the Park is not intended to be a substitute for your own physicians and health professionals. 
-      It is provided for educational purposes only. 
-      We do not provide medical diagnosis or treatment. You assume full responsibility for how you choose to use this information.
-    </p>
-  </div>
+    
   
-</div>
-<br>
+  <div class="passport" style="margin-top:-65px; border:1px solid;">
+    <div class="front-container" style="font-size: 12px;border: 1px solid;margin-right: -10px;margin-top: 28px;">
+    </div>
+    
+    <div class="front-container" style="border: 1px solid;border: 1px solid;margin-top: 55px;margin-right: -30px;">
+      <p>Passport to Prizes</p>
+        <div id="Image_0" class="imageSection"><img id="img_0" name="img_0">
+          picture
+        </div> 
+        front-container
+    </div>
+    
+  </div>
+    
+  <br>
+-->
+<!--end print view for the passport, display set to none-->
 
-<div class="innerPages" style=" width:370px;">
+<!--begin inner passport-->
+<!--<div class="passport" style="margin-top:-10px;float:right;">
   <%@event.boothlist.each do |booth_id|%>
     <%booth = Booth.find(booth_id)%>
     <div class ="booth-container">
@@ -93,7 +179,22 @@
   <%end%>
 </div>
 
+<div class="passport" style="margin-top:-10px;float:right;">
+  <%@event.boothlist.each do |booth_id|%>
+    <%booth = Booth.find(booth_id)%>
+    <div class ="booth-container">
+      <div class="sticker-field">
+         <p style="text-align:center;font-size:12px"><%=booth.name%> </p>
+      </div>
+    </div>
+  <%end%>
+</div>
+
+<!--end inner passport-->
+
 <!-- layout for the print view-->
+
+
 
 <!-- jquery for image slider -->
 <script>
@@ -151,30 +252,40 @@ $(document).ready(function () {
 });
 </script>
 
-<!-- jquery for image slider -->
+<!-- end jquery for image slider -->
 
 <script>
-$(".imageSection button").click(function() {
-    $(".imageSection img").removeClass("activeImage");
-    $(this).parent().find("img").addClass("activeImage");
-    $(this).parent().find("img").addClass("activeImage");
-});
-$(".imageSection:eq(0) img").addClass("activeImage");
-$(".imageSection:eq(1) img").addClass("activeImage");
-
-function readURL(input) {
+function readFrontURL(input) {
+   $(".front-image img").addClass("activeImage");
+   
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-            $('.prw_img,.activeImage').attr('src', e.target.result).width(100).height(100);
+            $('.activeImage').attr('src', e.target.result).width(343).height(457);
             $('.activeImage').css('display', 'inline');
         };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function readBackURL(input) {
+  $(".back-image img").addClass("activeImage1");
+  
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.activeImage1').attr('src', e.target.result).width(343).height(457);
+            $('.activeImage1').css('display', 'inline');
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
+
 
 <script>
 	$(".side-event").addClass("active");

@@ -2,11 +2,8 @@
 	#print-button{
 		display:none;
 	}
-	.passport{
-		display:block;
-		width: 400px;
-		height: 900px;
-	}
+	
+/* stuff we dont want to display*/
 	form{
 		display:none;
 	}
@@ -19,24 +16,63 @@
 	}
 	.imageSection{
 		display:block;
-		margin-bottom:30px;
 		border: none;
 	}
-	.front-container{
-		display:block;
-		width: 180px;
-		height: 140px;
-		transform: rotate(90deg);
-		float: right;
-		
+	
+	.slidebox{
+		display:none;
 	}
 	
-	.innerPages{
-		display:block;
-		width: 800px;
-		height: 1200px;	
+/* end stuff we dont want to display*/
+	
+/*printing of passport*/
+	.page{
+		margin-top:-65px;
 	}
-
+	
+	.page2 {
+		height:917px;
+		width:702px;
+		position:relative;
+	}
+	
+	.inside-page{
+		float:left;
+		height:455px;
+		width:690px;
+	}
+	
+	h1 {
+		text-align:center;
+	}
+	
+	.back {
+		float:left;
+		height:457.5px;
+		width:350px;
+	}
+	
+	.front {
+		float:left;
+		height:457.5px;
+		width:350px;
+	}
+	
+	#date {
+		top:100px;
+		left:465px;
+		position:absolute;
+	}
+	
+	#img_1 {
+		position:relative;
+	}
+	
+	#img_2 {
+		position:relative;
+	}
+	
+/* for displaying booths inside the inside passport pages*/
 	.sticker-field{
 		margin: auto;
 		width: 70px;
@@ -45,24 +81,44 @@
 		border-radius: .5em;
 	}
 
-	.booth-info{
-		margin: 0 auto;
-		padding: 10px;
-		text-align: center;
-	}
-
 	.booth-container{
 		width: 80px;
 		height: 80px;
 		padding-left: 10px;
-		transform: rotate(90deg);
-		float: right;
 		margin-bottom: 30px;
+		float: left;
 	}
+/* end for displaying booths inside the inner page*/
 
-	.slidebox{
-		display:none;
-	}
+
+/*previous stuff used for the passport*/
+
+	/*.booth-info{
+		margin: 0 auto;
+		padding: 10px;
+		text-align: center;
+	}*/
 	
+	/*.passport{
+		display:block;
+		width: 325px;
+		height: 900px;
+	}*/
+	
+	/*.front-container{
+		display:block;
+		width: 450px;
+  		height: 325px;
+		transform: rotate(90deg);
+		float: left;
+		
+	}*/
+	
+	/*.innerPages{
+		display:block;
+		width:325px; 
+		height:900px;
+		border:1px solid;
+	}*/
 
 }

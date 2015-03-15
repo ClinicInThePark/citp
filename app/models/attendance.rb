@@ -5,6 +5,7 @@ class Attendance < ActiveRecord::Base
 	validates :booth_id, presence: true
 	validates :booth_attendance, presence: true
 	
+	
 	def self.to_csv(options = {})
 		CSV.generate do |csv|
 			csv <<column_names
