@@ -31,8 +31,10 @@
 	}
 	
 	.page2 {
+		margin-top:-25px;
 		height:917px;
-		width:702px;
+		width:700px;
+		border:none;
 		position:relative;
 	}
 	

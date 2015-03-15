@@ -94,14 +94,14 @@
 <br>
 <br>
 
-<div class="page2" style="border:1px solid #B8B8B8;">
+<div class="page2">
 	  <!--inner page#1-->
 	  <div class="inside-page">
 	     <%@event.boothlist.each do |booth_id|%>
         <%booth = Booth.find(booth_id)%>
         <div class ="booth-container">
           <div class="sticker-field">
-             <p style="text-align:center;font-size:12px"><%=booth.name%> </p>
+             <p style="text-align:center;font-size:12px;"><%=booth.name%></p>
           </div>
         </div>
       <%end%>
@@ -113,7 +113,7 @@
         <%booth = Booth.find(booth_id)%>
         <div class ="booth-container">
           <div class="sticker-field">
-             <p style="text-align:center;font-size:12px"><%=booth.name%> </p>
+             <p style="text-align:center;font-size:12px;"><%=booth.name%></p>
           </div>
         </div>
       <%end%>

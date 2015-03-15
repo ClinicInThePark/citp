@@ -34,9 +34,8 @@
 }
 
 .booth-container{
-	width: 100px;
-	height: 100px;
-	padding-left: 30px;
+	width: 75px;
+	height: 75px;
 	float: left;
 	margin-bottom: 50px;
 }
@@ -65,13 +64,15 @@
 	height:917px;
 	width:702px;
 	position:relative;
+	border:1px solid;
 }
 
 .inside-page{
 	float:left;
 	height:455px;
 	width:690px;
-	margin:15px;
+	position:relative;
+	//margin:5px;
 }
 
 .back {
@@ -88,13 +89,13 @@
 
 #date {
 	top:100px;
-	left:465px;
+	left:467px;
 	position:absolute;
 }
 
 #date2 {
 	top:560px;
-	left:465px;
+	left:467px;
 	position:absolute;
 }
 
